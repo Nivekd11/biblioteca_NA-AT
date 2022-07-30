@@ -1,5 +1,7 @@
 package control;
 
+import java.util.*;
+
 import entities.Libro;
 
 /**
@@ -16,7 +18,12 @@ public class Control_Libros {
     /**
      * 
      */
-    public Libro obj_Book;
+    private Libro objLibro;
+
+    /**
+     * 
+     */
+    private List<Libro> listLibros;
 
     /**
      * @param id
@@ -47,10 +54,20 @@ public class Control_Libros {
     }
 
     /**
-     * 
+     * @return
      */
-    public void mostrarLibros() {
+    public List<Libro> mostrarLibros() {
         // TODO implement here
+        return null;
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    public Libro mostrarLibro(int id) {
+        // TODO implement here
+        return null;
     }
 
 }

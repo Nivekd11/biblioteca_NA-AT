@@ -1,8 +1,6 @@
 package boundaries;
 
-import java.util.*;
-
-import entities.Estante;
+import control.Control_Estantes;
 
 /**
  * 
@@ -18,11 +16,6 @@ public class gestionar_estantes {
     /**
      * 
      */
-    public Estante obj_Estante;
-
-    /**
-     * 
-     */
-    public List<Estante> arr_Estante;
+    private Control_Estantes objControl;
 
 }

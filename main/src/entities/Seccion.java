@@ -14,25 +14,39 @@ public class Seccion {
     /**
      * 
      */
-    public String nombre;
+    private String nombre;
 
     /**
      * 
      */
-    public char id;
+    private char id;
 
     /**
-     * 
+     * @return
+     */
+    public char getId() {
+        return this.id;
+    }
+
+    /**
+     * @return
      */
     public String getNombre() {
         return this.nombre;
     }
 
     /**
-     * 
+     * @param id
      */
-    public int getId() {
-        return this.id;
+    public void setId(char id) {
+        // TODO implement here
+    }
+
+    /**
+     * @param nombre
+     */
+    public void setNombre(String nombre) {
+        // TODO implement here
     }
 
 }

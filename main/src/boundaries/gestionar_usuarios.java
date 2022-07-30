@@ -1,8 +1,6 @@
 package boundaries;
 
-import java.util.*;
-
-import entities.Usuario;
+import control.Control_Socios;
 
 /**
  * 
@@ -18,11 +16,6 @@ public class gestionar_usuarios {
     /**
      * 
      */
-    private Usuario obj_Usuario;
-
-    /**
-     * 
-     */
-    private List<Usuario> arr_Usuarios;
+    private Control_Socios objControl;
 
 }

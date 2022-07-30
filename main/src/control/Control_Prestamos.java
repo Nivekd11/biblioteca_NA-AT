@@ -2,7 +2,10 @@ package control;
 
 import java.util.*;
 
+import entities.Libro;
+import entities.Penalizacion;
 import entities.Prestamo;
+import entities.Socio;
 
 /**
  * 
@@ -18,13 +21,41 @@ public class Control_Prestamos {
     /**
      * 
      */
-    public Prestamo obj_Prestamo;
+    private Prestamo objPrestamo;
+
+    /**
+     * 
+     */
+    private Socio objSocio;
+
+    /**
+     * 
+     */
+    private Libro objLibro;
+
+    /**
+     * 
+     */
+    private List<Prestamo> listPrestamos;
+
+    /**
+     * 
+     */
+    public Penalizacion objPenalizacion;
 
     /**
      * @param prestamo
      */
     public void crearPrestamo(Prestamo prestamo) {
         // TODO implement here
+    }
+
+    /**
+     * @return
+     */
+    public List<Prestamo> mostrarPrestamos() {
+        // TODO implement here
+        return null;
     }
 
     /**
@@ -35,10 +66,12 @@ public class Control_Prestamos {
     }
 
     /**
-     * 
+     * @param id
+     * @return
      */
-    public void mostrarPrestamos() {
+    public Prestamo mostrarPrestamo(int id) {
         // TODO implement here
+        return null;
     }
 
 }

@@ -1,8 +1,6 @@
 package boundaries;
 
-import java.util.*;
-
-import entities.Seccion;
+import control.Control_Estantes;
 
 /**
  * 
@@ -18,11 +16,6 @@ public class gestionar_secciones {
     /**
      * 
      */
-    public Seccion obj_Seccion;
-
-    /**
-     * 
-     */
-    public List<Seccion> arr_Seccion;
+    public Control_Estantes objControl;
 
 }

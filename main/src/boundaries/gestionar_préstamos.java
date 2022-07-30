@@ -1,8 +1,6 @@
 package boundaries;
 
-import java.util.*;
-
-import entities.Prestamo;
+import control.Control_Prestamos;
 
 /**
  * 
@@ -18,11 +16,6 @@ public class gestionar_préstamos {
     /**
      * 
      */
-    public Prestamo objPrestamo;
-
-    /**
-     * 
-     */
-    public List<Prestamo> arr_prestamos;
+    private Control_Prestamos objControl;
 
 }

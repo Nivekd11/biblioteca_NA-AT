@@ -1,8 +1,6 @@
 package boundaries;
 
-import java.util.*;
-
-import entities.Libro;
+import control.Control_Libros;
 
 /**
  * 
@@ -18,11 +16,6 @@ public class gestionar_libros {
     /**
      * 
      */
-    public Libro obj_Book;
-
-    /**
-     * 
-     */
-    public List<Libro> arr_Books;
+    private Control_Libros objControl;
 
 }

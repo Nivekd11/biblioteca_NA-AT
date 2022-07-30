@@ -1,6 +1,6 @@
 package entities;
 
-import java.util.*;
+import java.util.Date;
 
 /**
  * 
@@ -21,9 +21,12 @@ public class Prestamo {
     /**
      * 
      */
-    private Date fechaIngreso;
 
-    /*
+    /**
+     * 
+     */
+    private Date fechaIngreso;
+    /**
      * 
      */
     private Date fechaLimite;
@@ -36,7 +39,7 @@ public class Prestamo {
     /**
      * 
      */
-    private Usuario cliente;
+    private Socio socio;
 
     /**
      * 
@@ -44,67 +47,87 @@ public class Prestamo {
     private Libro libro;
 
     /**
-     * 
-     */
-    public void finishLoan() {
-        // TODO
-    }
-
-    /**
-     * 
-     */
-    public void updateLoanState() {
-        // TODO
-    }
-
-    /**
-     * 
-     */
-    public void getDatosPrestamo() {
-        // TODO
-    }
-
-    /**
-     * 
+     * @return
      */
     public String getFolio() {
         return this.folio;
     }
 
     /**
-     * 
+     * @return
      */
     public Date getFechaIngreso() {
         return this.fechaIngreso;
     }
 
     /**
-     * 
+     * @return
      */
     public Date getFechaLimite() {
-
         return this.fechaLimite;
     }
 
     /**
-     * 
+     * @return
      */
     public Date getFechaEgreso() {
         return this.fechaEgreso;
     }
 
     /**
-     * 
+     * @return
      */
-    public Usuario getCliente() {
-        return this.cliente;
+    public Socio getSocio() {
+        return this.socio;
     }
 
     /**
-     * 
+     * @return
      */
     public Libro getLibro() {
         return this.libro;
+    }
+
+    /**
+     * @param folio
+     */
+    public void setFolio(String folio) {
+        // TODO implement here
+    }
+
+    /**
+     * @param fechaIngreso
+     */
+    public void setFechaIngreso(Date fechaIngreso) {
+        // TODO implement here
+    }
+
+    /**
+     * @param fechaLimite
+     */
+    public void setFechaLimite(Date fechaLimite) {
+        // TODO implement here
+    }
+
+    /**
+     * @param fechaEgreso
+     */
+    public void setFechaEgreso(Date fechaEgreso) {
+        // TODO implement here
+    }
+
+    /**
+     * @param socio
+     */
+    public void setSocio(Socio socio) {
+        // TODO implement here
+    }
+
+    /**
+     * @param libro
+     */
+    public void setLibro(Libro libro) {
+        // TODO implement here
     }
 
 }
