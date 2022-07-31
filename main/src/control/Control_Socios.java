@@ -1,13 +1,15 @@
 package control;
 
+import java.sql.*;
 import java.util.*;
 
+import entities.Conexion;
 import entities.Socio;
 
 /**
  * 
  */
-public class Control_Socios {
+public class Control_Socios extends Conexion {
 
     /**
      * Default constructor
@@ -51,6 +53,7 @@ public class Control_Socios {
      */
     public List<Socio> mostrarSocios() {
         // TODO implement here
+
         return null;
     }
 
@@ -58,8 +61,42 @@ public class Control_Socios {
      * @param id
      * @return
      */
-    public Socio mostrarSocio(int id) {
+    public Socio mostrarSocio(String curp) {
         // TODO implement here
+        objSocio = new Socio();
+        PreparedStatement ps = null;
+        Connection conexion = getConnection();
+        ResultSet rs = null;
+        String sql = "SELECT * from socio where curp=?";
+
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1, curp);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                this.objSocio.setCurp(rs.getString("curp"));
+                this.objSocio.setNombre(rs.getString("nombre"));
+                this.objSocio.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                this.objSocio.setTelefono(rs.getString("telefono"));
+                this.objSocio.setEmail(rs.getString("correo"));
+                this.objSocio.setDireccion(rs.getString("direccion"));
+                this.objSocio.setEstatus(rs.getString("estatus"));
+
+                return objSocio;
+
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e);
+            return null;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
         return null;
     }
 

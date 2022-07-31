@@ -16,7 +16,9 @@ public class Socio {
     /**
      * 
      */
-    private int id;
+    private String curp;
+
+    private String nombre;
 
     /**
      * 
@@ -38,6 +40,8 @@ public class Socio {
      */
     private String email;
 
+    private String estatus;
+
     /**
      * 
      */
@@ -51,8 +55,12 @@ public class Socio {
     /**
      * @return
      */
-    public int getId() {
-        return this.id;
+    public String geCurp() {
+        return this.curp;
+    }
+
+    public String getNombre() {
+        return this.nombre;
     }
 
     /**
@@ -83,6 +91,10 @@ public class Socio {
         return this.email;
     }
 
+    public String getEstatus() {
+        return this.estatus;
+    }
+
     /**
      * @return
      */
@@ -100,22 +112,34 @@ public class Socio {
     /**
      * @param id
      */
-    public void setId(int id) {
-        // TODO implement here
+    public void setCurp(String curp) {
+        if (curp.length() == 18) {
+            this.curp = curp;
+        } else {
+            System.err.println("Curp invalid: " + curp);
+        }
+
+    }
+
+    public void setNombre(String nombre) {
+        if (nombre.length() > 0) {
+            this.nombre = nombre;
+        }
     }
 
     /**
      * @param fechaNacimiento
      */
     public void setFechaNacimiento(Date fechaNacimiento) {
-        // TODO implement here
+
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     /**
      * @param direccion
      */
     public void setDireccion(String direccion) {
-        // TODO implement here
+        this.direccion = direccion;
     }
 
     /**
@@ -123,6 +147,7 @@ public class Socio {
      */
     public void setTelefono(String telefono) {
         // TODO implement here
+        this.telefono = telefono;
     }
 
     /**
@@ -130,6 +155,7 @@ public class Socio {
      */
     public void setEmail(String email) {
         // TODO implement here
+        this.email = email;
     }
 
     /**
@@ -137,13 +163,23 @@ public class Socio {
      */
     public void setPrestamos(List<Prestamo> prestamos) {
         // TODO implement here
+        this.prestamos = prestamos;
     }
 
     /**
      * @param tienePenalizacion
      */
-    public void setTienePenalziaciones(boolean tienePenalizacion) {
-        // TODO implement here
+    public void setTienePenalziaciones(boolean tienePenalizaciones) {
+        this.tienePenalizaciones = tienePenalizaciones;
     }
 
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    public String toString() {
+        return String.format("Curp: " + curp + " Nombre: " + nombre + " Fecha de nacimiento: "
+                + fechaNacimiento.toString() + " Numero: " + telefono + " Correo: " + email + " Direccion" + direccion
+                + " Estatus: " + estatus);
+    }
 }
