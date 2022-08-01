@@ -11,21 +11,17 @@ import entities.Socio;
  */
 public class Control_Socios extends Conexion {
 
-    /**
-     * Default constructor
-     */
+    Connection conexion;
+    private Socio objSocio;
+    private List<Socio> listSocios;
+
     public Control_Socios() {
+
+       conexion = ConexionBD.connectDatabase();
+       listSocios = new ArrayList<Socio>();
     }
 
-    /**
-     * 
-     */
-    private Socio objSocio;
-
-    /**
-     * 
-     */
-    private List<Socio> listSocios;
+    
 
     /**
      * @param socio
@@ -52,9 +48,36 @@ public class Control_Socios extends Conexion {
      * @return
      */
     public List<Socio> mostrarSocios() {
-        // TODO implement here
-
-        return null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT * from socio";
+        try{
+           ps = conexion.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while(rs.next()){
+                Socio socio = new Socio();
+                socio.setCurp(rs.getString("curp"));
+                socio.setNombre(rs.getString("nombre"));
+                socio.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                socio.setTelefono(rs.getString("telefono"));
+                socio.setEmail(rs.getString("correo"));
+                socio.setDireccion(rs.getString("direccion"));
+                socio.setEstatus(rs.getString("estatus"));
+                this.listSocios.add(socio);
+           }
+           
+            return listSocios;
+        } catch (Exception e) {
+            System.err.println(e);
+            return null;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        
     }
 
     /**
@@ -65,7 +88,6 @@ public class Control_Socios extends Conexion {
         // TODO implement here
         objSocio = new Socio();
         PreparedStatement ps = null;
-        Connection conexion = getConnection();
         ResultSet rs = null;
         String sql = "SELECT * from socio where curp=?";
 

@@ -7,54 +7,19 @@ import java.util.*;
  */
 public class Socio {
 
-    /**
-     * Default constructor
-     */
+    private String curp;
+    private String nombre;
+    private Date fechaNacimiento;
+    private String direccion;
+    private String telefono;
+    private String email;
+    private String estatus;
+    private List<Prestamo> prestamos;
+    private boolean tienePenalizaciones;
+
     public Socio() {
     }
 
-    /**
-     * 
-     */
-    private String curp;
-
-    private String nombre;
-
-    /**
-     * 
-     */
-    private Date fechaNacimiento;
-
-    /**
-     * 
-     */
-    private String direccion;
-
-    /**
-     * 
-     */
-    private String telefono;
-
-    /**
-     * 
-     */
-    private String email;
-
-    private String estatus;
-
-    /**
-     * 
-     */
-    private List<Prestamo> prestamos;
-
-    /**
-     * 
-     */
-    private boolean tienePenalizaciones;
-
-    /**
-     * @return
-     */
     public String geCurp() {
         return this.curp;
     }
@@ -178,8 +143,8 @@ public class Socio {
     }
 
     public String toString() {
-        return String.format("Curp: " + curp + " Nombre: " + nombre + " Fecha de nacimiento: "
-                + fechaNacimiento.toString() + " Numero: " + telefono + " Correo: " + email + " Direccion" + direccion
-                + " Estatus: " + estatus);
+        return String.format("Curp: " + curp + " \nNombre: " + nombre + " \nFecha de nacimiento: "
+                + fechaNacimiento.toString() + " \nNumero: " + telefono + " \nCorreo: " + email + " \nDireccion: " + direccion
+                + " \nEstatus: " + estatus);
     }
 }
