@@ -2,14 +2,12 @@ package control;
 
 import java.sql.*;
 import java.util.*;
-
-import entities.Conexion;
 import entities.Libro;
 
 /**
  * 
  */
-public class Control_Libros extends Conexion {
+public class Control_Libros extends ConexionBD {
 
     private Libro objLibro;
     private List<Libro> listLibros;
@@ -22,8 +20,25 @@ public class Control_Libros extends Conexion {
     /**
      * @param id
      */
-    public void actualizarDisponibilidad(int id) {
+    public void actualizarDisponibilidad(int id, int nuevoValor) {
         // TODO implement here
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "UPDATE libro SET ejemplares = ? WHERE idlibro = ?";
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, nuevoValor);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
     }
 
     /**
@@ -60,8 +75,34 @@ public class Control_Libros extends Conexion {
     /**
      * @param libro
      */
-    public void actualizarLibro(Libro libro) {
+    public void actualizarLibro(Libro libro, int id) {
         // TODO implement here
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "UPDATE libro SET titulo = ? , valor = ?, ejemplares = ?,edicion = ?,ideditorial = ?,isbn = ? WHERE idlibro = ?";
+
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1, libro.getTitulo());
+            ps.setDouble(2, libro.getValor());
+            ps.setInt(3, libro.getEjemplares());
+            ps.setString(4, libro.getEdicion());
+            ps.setInt(5, libro.getIdEditorial());
+            ps.setString(6, libro.getIsbn());
+            ps.setInt(7, libro.getIdLibro());
+            ps.executeUpdate();
+            System.out.println("Libro actualizado");
+
+        } catch (SQLException e) {
+            System.out.println(e);
+
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
     }
 
     /**
@@ -69,6 +110,23 @@ public class Control_Libros extends Conexion {
      */
     public void eliminarLibro(int id) {
         // TODO implement here
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM libro WHERE idlibro=?;";
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
     }
 
     /**
