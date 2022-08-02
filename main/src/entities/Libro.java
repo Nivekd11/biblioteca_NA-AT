@@ -14,7 +14,7 @@ public class Libro {
     /**
      * 
      */
-    private int id;
+    private int idLibro;
 
     /**
      * 
@@ -29,7 +29,7 @@ public class Libro {
     /**
      * 
      */
-    private boolean disponibilidad;
+    private int ejemplares;
 
     /**
      * 
@@ -54,6 +54,10 @@ public class Libro {
     /**
      * 
      */
+    private int idEditorial;
+    /**
+    * 
+    */
     private boolean tienePenalizacion;
 
     /**
@@ -64,8 +68,8 @@ public class Libro {
     /**
      * @return id
      */
-    public int getId() {
-        return this.id;
+    public int getIdLibro() {
+        return this.idLibro;
     }
 
     /**
@@ -85,8 +89,8 @@ public class Libro {
     /**
      * @return
      */
-    public boolean getDisponibilidad() {
-        return this.disponibilidad;
+    public int getEjemplares() {
+        return this.ejemplares;
     }
 
     /**
@@ -117,6 +121,10 @@ public class Libro {
         return this.editorial;
     }
 
+    public int getIdEditorial() {
+        return this.idEditorial;
+    }
+
     /**
      * @return tienePenalizacion
      */
@@ -134,57 +142,66 @@ public class Libro {
     /**
      * @param id
      */
-    public void setId(int id) {
-        // TODO implement here
+    public void setIdLibro(int idLibro) {
+        this.idLibro = idLibro;
+
     }
 
     /**
      * @param isbn
      */
     public void setIsbn(String isbn) {
-        // TODO implement here
+        if (isbn.length() == 10 || isbn.length() == 13) {
+            this.isbn = isbn;
+        } else {
+            // System.err.println("El dato ingresado no es un ISBN valido.");
+        }
     }
 
     /**
      * @param titulo
      */
     public void setTitulo(String titulo) {
-        // TODO implement here
+        this.titulo = titulo;
     }
 
     /**
-     * @param disponible
+     * @param Numero de ejemplares disponibles
      */
-    public void setDisponibilidad(boolean disponible) {
-        // TODO implement here
+    public void setEjemplares(int ejemplares) {
+        this.ejemplares = ejemplares;
     }
 
     /**
      * @param edicion
      */
     public void setEdicion(String edicion) {
-        // TODO implement here
+        this.edicion = edicion;
     }
 
     /**
      * @param valor
      */
     public void setValor(double valor) {
-        // TODO implement here
+        this.valor = valor;
     }
 
     /**
      * @param estante
      */
     public void setEstante(String estante) {
-        // TODO implement here
+        this.estante = estante;
     }
 
     /**
      * @param editorial
      */
     public void setEditorial(String editorial) {
-        // TODO implement here
+        this.editorial = editorial;
+    }
+
+    public void setIdEditorial(int idEditorial) {
+        this.idEditorial = idEditorial;
     }
 
     /**
@@ -192,6 +209,7 @@ public class Libro {
      */
     public void setTienePenalizacion(boolean tienePenalizacion) {
         // TODO implement here
+        this.tienePenalizacion = tienePenalizacion;
     }
 
     /**
@@ -199,6 +217,12 @@ public class Libro {
      */
     public void setAutor(String autor) {
         // TODO implement here
+        this.autor = autor;
+    }
+
+    public String toString() {
+        return "idLibro: " + idLibro + ". ISBN: " + isbn + ". Titulo: " + titulo + ". valor: " + valor + ". #Ejemplares"
+                + ejemplares + ". Edicion: " + edicion + ". IdEditorial: " + idEditorial;
     }
 
 }

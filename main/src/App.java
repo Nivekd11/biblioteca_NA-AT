@@ -7,11 +7,10 @@ import entities.Socio;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
         System.out.println("Hello, World!");
-        
-        //ConexionBD.connectDatabase();
-        
-        gestionar_usuarios vistaUsuarios =new gestionar_usuarios();
+
+        gestionar_usuarios vistaUsuarios = new gestionar_usuarios();
         vistaUsuarios.manejarMenu();
     //    Socio socio = new Socio();
     //    socio.setFechaNacimiento(java.sql.Date.valueOf(LocalDate.of(1999, Month.of(8), 19)));
@@ -19,6 +18,5 @@ public class App {
         
 
     }
-    
-    
+
 }
