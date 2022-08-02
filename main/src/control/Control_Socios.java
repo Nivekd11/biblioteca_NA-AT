@@ -27,27 +27,97 @@ public class Control_Socios extends Conexion {
      * @param socio
      */
     public void crearSocio(Socio socio) {
-        // TODO implement here
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "INSERT INTO socio (curp,nombre,fecha_nacimiento,telefono,correo,direccion,estatus) VALUES(?,?,?,?,?,?,?);";
+
+        try{
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1,socio.geCurp());
+            ps.setString(2, socio.getNombre());
+            ps.setDate(3, socio.getFechaNacimiento());
+            ps.setString(4, socio.getTelefono());
+            ps.setString(5, socio.getEmail());
+            ps.setString(6, socio.getDireccion());
+            ps.setObject(7, socio.getEstatus(),Types.OTHER);
+            ps.executeQuery(); 
+
+        }catch (Exception e) {
+            System.err.println(e);
+            
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                //System.err.println(e);
+            }
+        }
     }
 
     /**
      * @param socio
      */
-    public void actualizarSocio(Socio socio) {
-        // TODO implement here
+    public void actualizarSocio(Socio socio,String curp) {
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "UPDATE socio SET curp = ?, nombre = ? , fecha_nacimiento = ?, telefono = ?,correo = ?,direccion = ?,estatus = ? WHERE curp = ?";
+
+        try{
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1,socio.geCurp());
+            ps.setString(2, socio.getNombre());
+            ps.setDate(3, socio.getFechaNacimiento());
+            ps.setString(4, socio.getTelefono());
+            ps.setString(5, socio.getEmail());
+            ps.setString(6, socio.getDireccion());
+            ps.setObject(7, socio.getEstatus(),Types.OTHER);
+            ps.setString(8,socio.geCurp());
+            ps.executeQuery(); 
+
+        }catch (Exception e) {
+            System.err.println(e);
+            
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                //System.err.println(e);
+            }
+        }
+        
     }
 
     /**
      * @param curp
      */
     public void eliminarSocio(String curp) {
-        // TODO implement here
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM socio WHERE curp=?;";
+
+        try{
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1,curp);
+            ps.executeQuery(); 
+
+        }catch (Exception e) {
+            System.err.println(e);
+            
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                //System.err.println(e);
+            }
+        }
+    
     }
 
     /**
      * @return
      */
     public List<Socio> mostrarSocios() {
+        conexion = ConexionBD.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = "SELECT * from socio";
@@ -85,7 +155,8 @@ public class Control_Socios extends Conexion {
      * @return
      */
     public Socio mostrarSocio(String curp) {
-        // TODO implement here
+        
+        conexion = ConexionBD.connectDatabase();
         objSocio = new Socio();
         PreparedStatement ps = null;
         ResultSet rs = null;

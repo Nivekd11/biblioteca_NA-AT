@@ -1,7 +1,7 @@
 package entities;
 
 import java.util.*;
-
+import java.sql.Date;
 /**
  * 
  */
@@ -9,7 +9,7 @@ public class Socio {
 
     private String curp;
     private String nombre;
-    private Date fechaNacimiento;
+    private java.sql.Date fechaNacimiento;
     private String direccion;
     private String telefono;
     private String email;
@@ -31,7 +31,7 @@ public class Socio {
     /**
      * @return
      */
-    public Date getFechaNacimiento() {
+    public java.sql.Date getFechaNacimiento() {
         return this.fechaNacimiento;
     }
 
