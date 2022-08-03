@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Scanner;
 
 import boundaries.gestionar_libros;
 import boundaries.gestionar_usuarios;
@@ -10,18 +11,23 @@ import entities.Socio;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        System.out.println("Hello, World!");
-
-        // gestionar_usuarios vistaUsuarios = new gestionar_usuarios();
-        // vistaUsuarios.manejarMenu();
-        // Socio socio = new Socio();
-        // socio.setFechaNacimiento(java.sql.Date.valueOf(LocalDate.of(1999,
-        // Month.of(8), 19)));
-        // System.out.println( "Fecha de mi cumpleaños: " +
-        // socio.getFechaNacimiento().toString() );
-
+        gestionar_usuarios vistaUsuarios = new gestionar_usuarios();
         gestionar_libros vistaLibros = new gestionar_libros();
-        vistaLibros.manejarMenu();
+
+        System.out.println("*******MENU BIBLIOTECA*******");
+        Scanner entrada = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("Digite la opcion que desea.\n1. Menu socios.\n2. Menu libros.");
+            opcion = entrada.nextInt();
+            switch (opcion) {
+                case 1:
+                    vistaUsuarios.manejarMenu();
+                    break;
+                case 2:
+                    vistaLibros.manejarMenu();
+            }
+        } while (opcion == 1 || opcion == 2);
 
     }
 

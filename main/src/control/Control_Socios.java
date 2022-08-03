@@ -3,13 +3,12 @@ package control;
 import java.sql.*;
 import java.util.*;
 
-import entities.Conexion;
 import entities.Socio;
 
 /**
  * 
  */
-public class Control_Socios extends Conexion {
+public class Control_Socios {
 
     Connection conexion;
     private Socio objSocio;
@@ -17,11 +16,9 @@ public class Control_Socios extends Conexion {
 
     public Control_Socios() {
 
-       conexion = ConexionBD.connectDatabase();
-       listSocios = new ArrayList<Socio>();
+        conexion = ConexionBD.connectDatabase();
+        listSocios = new ArrayList<Socio>();
     }
-
-    
 
     /**
      * @param socio
@@ -31,25 +28,25 @@ public class Control_Socios extends Conexion {
         PreparedStatement ps = null;
         String sql = "INSERT INTO socio (curp,nombre,fecha_nacimiento,telefono,correo,direccion,estatus) VALUES(?,?,?,?,?,?,?);";
 
-        try{
+        try {
             ps = conexion.prepareStatement(sql);
-            ps.setString(1,socio.geCurp());
+            ps.setString(1, socio.geCurp());
             ps.setString(2, socio.getNombre());
             ps.setDate(3, socio.getFechaNacimiento());
             ps.setString(4, socio.getTelefono());
             ps.setString(5, socio.getEmail());
             ps.setString(6, socio.getDireccion());
-            ps.setObject(7, socio.getEstatus(),Types.OTHER);
-            ps.executeQuery(); 
+            ps.setObject(7, socio.getEstatus(), Types.OTHER);
+            ps.executeQuery();
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println(e);
-            
+
         } finally {
             try {
                 conexion.close();
             } catch (SQLException e) {
-                //System.err.println(e);
+                // System.err.println(e);
             }
         }
     }
@@ -57,34 +54,34 @@ public class Control_Socios extends Conexion {
     /**
      * @param socio
      */
-    public void actualizarSocio(Socio socio,String curp) {
+    public void actualizarSocio(Socio socio, String curp) {
         conexion = ConexionBD.connectDatabase();
         PreparedStatement ps = null;
         String sql = "UPDATE socio SET curp = ?, nombre = ? , fecha_nacimiento = ?, telefono = ?,correo = ?,direccion = ?,estatus = ? WHERE curp = ?";
 
-        try{
+        try {
             ps = conexion.prepareStatement(sql);
-            ps.setString(1,socio.geCurp());
+            ps.setString(1, socio.geCurp());
             ps.setString(2, socio.getNombre());
             ps.setDate(3, socio.getFechaNacimiento());
             ps.setString(4, socio.getTelefono());
             ps.setString(5, socio.getEmail());
             ps.setString(6, socio.getDireccion());
-            ps.setObject(7, socio.getEstatus(),Types.OTHER);
-            ps.setString(8,socio.geCurp());
-            ps.executeQuery(); 
+            ps.setObject(7, socio.getEstatus(), Types.OTHER);
+            ps.setString(8, socio.geCurp());
+            ps.executeQuery();
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println(e);
-            
+
         } finally {
             try {
                 conexion.close();
             } catch (SQLException e) {
-                //System.err.println(e);
+                // System.err.println(e);
             }
         }
-        
+
     }
 
     /**
@@ -95,22 +92,22 @@ public class Control_Socios extends Conexion {
         PreparedStatement ps = null;
         String sql = "DELETE FROM socio WHERE curp=?;";
 
-        try{
+        try {
             ps = conexion.prepareStatement(sql);
-            ps.setString(1,curp);
-            ps.executeQuery(); 
+            ps.setString(1, curp);
+            ps.executeQuery();
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println(e);
-            
+
         } finally {
             try {
                 conexion.close();
             } catch (SQLException e) {
-                //System.err.println(e);
+                // System.err.println(e);
             }
         }
-    
+
     }
 
     /**
@@ -121,10 +118,10 @@ public class Control_Socios extends Conexion {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = "SELECT * from socio";
-        try{
-           ps = conexion.prepareStatement(sql);
-           rs = ps.executeQuery();
-           while(rs.next()){
+        try {
+            ps = conexion.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 Socio socio = new Socio();
                 socio.setCurp(rs.getString("curp"));
                 socio.setNombre(rs.getString("nombre"));
@@ -134,8 +131,8 @@ public class Control_Socios extends Conexion {
                 socio.setDireccion(rs.getString("direccion"));
                 socio.setEstatus(rs.getString("estatus"));
                 this.listSocios.add(socio);
-           }
-           
+            }
+
             return listSocios;
         } catch (Exception e) {
             System.err.println(e);
@@ -147,7 +144,7 @@ public class Control_Socios extends Conexion {
                 System.err.println(e);
             }
         }
-        
+
     }
 
     /**
@@ -155,7 +152,7 @@ public class Control_Socios extends Conexion {
      * @return
      */
     public Socio mostrarSocio(String curp) {
-        
+
         conexion = ConexionBD.connectDatabase();
         objSocio = new Socio();
         PreparedStatement ps = null;

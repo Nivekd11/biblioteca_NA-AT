@@ -7,7 +7,7 @@ import entities.Libro;
 /**
  * 
  */
-public class Control_Libros extends ConexionBD {
+public class Control_Libros {
 
     private Libro objLibro;
     private List<Libro> listLibros;

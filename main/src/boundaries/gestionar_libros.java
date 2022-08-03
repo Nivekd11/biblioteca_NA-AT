@@ -32,7 +32,7 @@ public class gestionar_libros {
                     "\nManejo de Libros \n\nDigita la opción que deseas utilizar.\n\n1. Buscar un libro\n2. Ver todos los libros\n3. Registrar un nuevo libro \n4. Eliminar el registro de un libro\n5. Actualizar los datos de un libro\n6. Regresar al menu principal\n\nDigita la opción: ");
             opcion = entrada.nextInt(10);
             seleccionarOpcion(opcion);
-        } while (opcion > 0);
+        } while (opcion > 0 && opcion < 6);
     }
 
     public void seleccionarOpcion(int opcion) {

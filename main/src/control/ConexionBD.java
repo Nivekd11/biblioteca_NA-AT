@@ -1,13 +1,12 @@
 package control;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConexionBD {
-    
-   
 
     public static Connection connectDatabase() {
-    
+
         String host = "20.25.166.209";
         String port = "5432";
         String database = "biblioteca1";
@@ -29,13 +28,13 @@ public class ConexionBD {
             // Conectamos con la base de datos
             connection = DriverManager.getConnection(
                     url,
-                    user, password);           
+                    user, password);
             boolean valid = connection.isValid(50000);
-            System.out.println(valid ? "TEST OK" : "TEST FAIL");
+            // System.out.println(valid ? "TEST OK" : "TEST FAIL");
 
             return connection;
 
-        } catch (java.sql.SQLException sqle) { 
+        } catch (java.sql.SQLException sqle) {
             System.out.println("Error al conectar con la base de datos de PostgreSQL (" + url + "): " + sqle);
 
             return null;
