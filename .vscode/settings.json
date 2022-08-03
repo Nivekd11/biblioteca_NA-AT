@@ -4,5 +4,8 @@
         "edicion",
         "Edicion",
         "Penalizacion"
+    ],
+    "conventionalCommits.scopes": [
+        "Entity"
     ]
 }
