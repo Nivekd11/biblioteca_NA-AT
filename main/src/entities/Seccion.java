@@ -25,7 +25,7 @@ public class Seccion {
         this.nombre = nombre;
     }
 
-    // Variables
+    // Atributos
     private String nombre;
     private char id;
 
