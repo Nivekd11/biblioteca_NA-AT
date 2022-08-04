@@ -8,6 +8,7 @@
         "Penalizacion"
     ],
     "conventionalCommits.scopes": [
-        "Entity"
+        "Entity",
+        "Control"
     ]
 }
