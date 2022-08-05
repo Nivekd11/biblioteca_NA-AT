@@ -21,21 +21,21 @@ public class Seccion {
      * @param nombre Nombre de la sección
      * @param id     Identificador de la sección
      */
-    public Seccion(String nombre, char id) {
+    public Seccion(String nombre, String id) {
         this.id = id;
         this.nombre = nombre;
     }
 
     // Atributos
     private String nombre;
-    private char id;
+    private String id;
 
     /**
      * Método para obtener el identificador de la Sección.
      *
      * @return char -> id de la sección
      */
-    public char getId() {
+    public String getId() {
         return this.id;
     }
 
