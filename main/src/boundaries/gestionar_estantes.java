@@ -1,6 +1,6 @@
 package boundaries;
 
-import control.Control_Estantes;
+import control.ControlEstantes;
 
 /**
  * 
@@ -16,6 +16,6 @@ public class gestionar_estantes {
     /**
      * 
      */
-    private Control_Estantes objControl;
+    private ControlEstantes objControl;
 
 }

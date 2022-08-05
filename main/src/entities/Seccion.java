@@ -5,6 +5,7 @@ package entities;
  *
  * @author Samuel Alcántara Chávez
  * @version 1.0
+ *
  */
 public class Seccion {
 
@@ -52,7 +53,7 @@ public class Seccion {
      *
      * @param id Identificador de la sección
      */
-    public void setId(char id) {
+    public void setId(String id) {
         this.id = id;
     }
 

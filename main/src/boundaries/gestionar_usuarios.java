@@ -3,6 +3,7 @@ package boundaries;
 import control.Control_Socios;
 import entities.Socio;
 
+import java.lang.System.Logger;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Month;
@@ -79,6 +80,7 @@ public class gestionar_usuarios {
 
     public void mostrarSocios(List<Socio> socios) {
         System.out.println("Datos de los Socios\n");
+
         for (Socio socio : socios) {
             System.out.println(socio.toString());
             System.out.println("****************************************");
