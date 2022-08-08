@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 /**
  * 
  */
@@ -44,7 +46,9 @@ public class Libro {
     /**
      * 
      */
-    private String estante;
+    private List<String> estante;
+
+    private List<String> seccion;
 
     /**
      * 
@@ -58,12 +62,13 @@ public class Libro {
     /**
     * 
     */
+
     private boolean tienePenalizacion;
 
     /**
      * 
      */
-    private String autor;
+    private List<String> autor;
 
     /**
      * @return id
@@ -101,6 +106,10 @@ public class Libro {
     }
 
     /**
+     * @return edicion
+     */
+
+    /**
      * @return valor
      */
     public double getValor() {
@@ -110,8 +119,12 @@ public class Libro {
     /**
      * @return estante
      */
-    public String getEstante() {
+    public List<String> getEstante() {
         return this.estante;
+    }
+
+    public List<String> getSeccion() {
+        return this.seccion;
     }
 
     /**
@@ -135,7 +148,7 @@ public class Libro {
     /**
      * @return autor
      */
-    public String getAutor() {
+    public List<String> getAutor() {
         return this.autor;
     }
 
@@ -189,8 +202,16 @@ public class Libro {
     /**
      * @param estante
      */
-    public void setEstante(String estante) {
+    public void setEstante(List<String> estante) {
         this.estante = estante;
+    }
+
+    /**
+     * @param seccion
+     */
+
+    public void setSeccion(List<String> seccion) {
+        this.seccion = seccion;
     }
 
     /**
@@ -215,14 +236,16 @@ public class Libro {
     /**
      * @param autor
      */
-    public void setAutor(String autor) {
+    public void setAutor(List<String> autor) {
         // TODO implement here
         this.autor = autor;
     }
 
     public String toString() {
-        return "idLibro: " + idLibro + ". ISBN: " + isbn + ". Titulo: " + titulo + ". valor: " + valor + ". #Ejemplares"
-                + ejemplares + ". Edicion: " + edicion + ". IdEditorial: " + idEditorial;
+        return "idLibro: " + idLibro + ". ISBN: " + isbn + ". Titulo: " + titulo + ". valor: " + valor
+                + ". #Ejemplares: " + ejemplares + ". Edicion: " + edicion + ". IdEditorial: " + idEditorial
+                + " Editorial: " + editorial + ". Autores: " + autor.toString() + ". Estantes" + estante + ". Seccion: "
+                + seccion + ".";
     }
 
 }
