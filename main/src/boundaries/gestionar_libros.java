@@ -1,9 +1,14 @@
 package boundaries;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import control.Control_Libros;
+import entities.Autor;
+import entities.Editorial;
 import entities.Libro;
 
 /**
@@ -95,6 +100,11 @@ public class gestionar_libros {
     private void crearLibro() {
 
         Libro libro = new Libro();
+        List<Autor> autores = objControl.mostrarAutores();
+        List<Editorial> editoriales = objControl.mostrarEditoriales();
+        List<Autor> autoresSeleccionados = new ArrayList<Autor>();
+        int opcion = 0;
+
         System.out.println("\nDigite los datos del libro");
         System.out.flush();
 
@@ -112,15 +122,36 @@ public class gestionar_libros {
         entrada.nextLine();
         libro.setEdicion(entrada.nextLine());
 
-        System.out.println("\nIngrese el id de la editorial");
-        libro.setIdEditorial(entrada.nextInt());
-
         System.out.println("\nIngrese el ISBN");
         libro.setIsbn(entrada.next());
 
+        System.out.println(
+                "\nAcontinuacion le mostraremos las editoriales. \nSeleccione 1 si es la editorial del libro. \nSeleccione 0 si no es la editorial  libro");
+
+        for (Editorial editorial : editoriales) {
+            System.out.println(editorial.getIdEditorial() + ". Nombre: " + editorial.getNombre());
+
+            if (entrada.nextInt() == 1) {
+                System.out.println("La editorial fue seleccionada.");
+                libro.setIdEditorial(editorial.getIdEditorial());
+                break;
+            }
+        }
+
+        System.out.println(
+                "\nAcontinuacion le mostraremos los autores. \nSeleccione 1 si es el autor del libro. \nSeleccione 0 si no es el autor del libro");
+        for (Autor autor : autores) {
+            System.out.println(autor.getIdautor() + ". Nombre: " + autor.getNombre());
+
+            if (entrada.nextInt() == 1) {
+                System.out.println("El autor fue seleccionado.");
+                autoresSeleccionados.add(autor);
+            }
+        }
+
         System.out.println("\n\n");
         entrada.nextLine();
-        objControl.crearLibro(libro);
+        objControl.crearLibro(libro, autoresSeleccionados);
     }
 
     private void actualizarLibro(int id) {
