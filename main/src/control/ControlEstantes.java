@@ -24,10 +24,74 @@ public class ControlEstantes {
     private List<Seccion> listSecciones;
 
     /**
-     * @param nombre
+     * Método para crear un nuevo estante.
+     *
+     * @param nombre  Nombre del estante
+     * @param seccion Nombre de la seccion a la que pertenecerá
      */
-    public void crearEstante(String nombre) {
-        // TODO implement here
+    public void crearEstante(String nombre, String seccion) {
+        Connection conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps;
+        String sql = "INSERT INTO ESTANTE (nombre, idseccion) values (?,?)";
+        int idSeccion;
+
+
+        // Acción: Comprobar que la sección existe para guardar su id
+        idSeccion = buscarIdSeccion(seccion);
+        // Condición: Realizar la inserción de una nueva sección en caso de que no exista
+        if (idSeccion == 0) {
+            crearSeccion(seccion);
+        }
+        // Acción: Realizar la inserción con una sección ya existente
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ps.setInt(2, idSeccion);
+            ps.execute();
+            System.out.println("Estante insertado");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    /**
+     * Método para obtener el id de una Sección.
+     *
+     * @param seccion Nombre de la sección que se va a buscar
+     * @return int -> Identificador de la sección.
+     */
+    private int buscarIdSeccion(String seccion) {
+        //Variables
+        Connection conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps;
+        ResultSet rs;
+        int idSeccion = 0;
+        String confirmarIdSeccion = "SELECT idseccion FROM seccion WHERE nombre = ?;";
+
+        // Action: Comprobar que la sección existe
+        try {
+            ps = conexion.prepareStatement(confirmarIdSeccion);
+            ps.setString(1, seccion);
+            rs = ps.executeQuery();
+            idSeccion = rs.getInt("idseccion");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return idSeccion;
     }
 
     /**
@@ -39,8 +103,8 @@ public class ControlEstantes {
     public Estante mostrarEstante(String nombre) {
         // Variables
         Connection conexion = ConexionBD.connectDatabase();
-        PreparedStatement query = null;
-        ResultSet rs = null;
+        PreparedStatement query;
+        ResultSet rs;
 
         // Action: Realizar consulta con la base de datos
         try {
@@ -74,8 +138,8 @@ public class ControlEstantes {
     public List<Estante> mostrarEstantes() {
         // Variables
         Connection conexion = ConexionBD.connectDatabase();
-        PreparedStatement query = null;
-        ResultSet rs = null;
+        PreparedStatement query;
+        ResultSet rs;
 
         // Action: Realizar consulta con la base de datos
         try {
@@ -96,7 +160,6 @@ public class ControlEstantes {
             try {
                 conexion.close();
             } catch (SQLException e) {
-                System.err.println("Error: El libro no se pudo crear");
                 e.printStackTrace();
             }
         }
@@ -112,8 +175,8 @@ public class ControlEstantes {
     public List<Seccion> mostrarSecciones() {
         // Variables
         Connection conexion = ConexionBD.connectDatabase();
-        PreparedStatement query = null;
-        ResultSet rs = null;
+        PreparedStatement query;
+        ResultSet rs;
 
         // Action: Realizar consulta con la base de datos
         try {
@@ -142,10 +205,28 @@ public class ControlEstantes {
     }
 
     /**
-     * @param nombre
+     * Método para crear una nueva sección.
+     *
+     * @param nombre Nombre de la sección
      */
-    public void crearSeccion(String nombre) {
-        // TODO implement here
+    private void crearSeccion(String nombre) {
+        Connection conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps;
+        String sql = "INSERT INTO Seccion (nombre) values (?)";
+
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ps.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

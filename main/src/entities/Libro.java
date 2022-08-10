@@ -140,7 +140,7 @@ public class Libro {
     }
 
     /**
-     * @param id
+     * @param idLibro
      */
     public void setIdLibro(int idLibro) {
         this.idLibro = idLibro;
