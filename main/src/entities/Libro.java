@@ -242,9 +242,10 @@ public class Libro {
     }
 
     public String toString() {
-        return "idLibro: " + idLibro + ". ISBN: " + isbn + ". Titulo: " + titulo + ". valor: " + valor
-                + ". #Ejemplares: " + ejemplares + ". Edicion: " + edicion + ". IdEditorial: " + idEditorial
-                + " Editorial: " + editorial + ". Autores: " + autor.toString() + ". Estantes" + estante + ". Seccion: "
+        return "idLibro: " + idLibro + "\nISBN: " + isbn + "\nTitulo: " + titulo + "\nPrecio: " + valor
+                + "\n#Ejemplares: " + ejemplares + "\nEdicion: " + edicion + "\nIdEditorial: " + idEditorial
+                + "\nEditorial: " + editorial + "\nAutores: " + autor.toString() + "\nEstantes" + estante
+                + "\nSeccion: "
                 + seccion + ".";
     }
 
