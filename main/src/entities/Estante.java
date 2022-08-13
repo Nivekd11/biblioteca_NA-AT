@@ -17,12 +17,16 @@ public class Estante {
     /**
      * Método constructor parametrizado
      *
-     * @param id      Identificador del estante
-     * @param nombre  Nombre del estante
-     * @param seccion Nombre de la sección en el estante
+     * @param id     Identificador del estante
+     * @param nombre Nombre del estante
      */
     public Estante(String nombre, String id, String seccion) {
         this.id = id;
+        this.nombre = nombre;
+        this.seccion = seccion;
+    }
+
+    public Estante(String nombre, String seccion) {
         this.nombre = nombre;
         this.seccion = seccion;
     }
@@ -50,14 +54,6 @@ public class Estante {
         return this.nombre;
     }
 
-    /**
-     * Método para obtener el nombre del Estante.
-     *
-     * @return String -> Sección a la que pertenece el estante
-     */
-    public String getSeccion() {
-        return this.seccion;
-    }
 
     /**
      * Método que actualiza el valor del identificador del estante.
@@ -77,13 +73,10 @@ public class Estante {
         this.nombre = nombre;
     }
 
-    /**
-     * Método que actualiza el valor del identificador del estante.
-     *
-     * @param seccion Nombre de la seccion
-     */
+    public String getSeccion() {
+        return this.seccion;
+    }
     public void setSeccion(String seccion) {
         this.seccion = seccion;
     }
-
 }

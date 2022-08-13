@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import entities.Estante;
@@ -18,10 +19,17 @@ import entities.Seccion;
 public class ControlEstantes {
 
     // Atributos
+    Connection conexion;
     private Estante objEstante;
     private Seccion objSeccion;
     private List<Estante> listEstantes;
     private List<Seccion> listSecciones;
+
+    public ControlEstantes() {
+        conexion = ConexionBD.connectDatabase();
+        listEstantes = new ArrayList<Estante>();
+        listSecciones = new ArrayList<Seccion>();
+    }
 
     /**
      * Método para crear un nuevo estante.
@@ -29,24 +37,15 @@ public class ControlEstantes {
      * @param nombre  Nombre del estante
      * @param seccion Nombre de la seccion a la que pertenecerá
      */
-    public void crearEstante(String nombre, String seccion) {
+    public void crearEstante(String nombre, int seccion) {
         Connection conexion = ConexionBD.connectDatabase();
         PreparedStatement ps;
         String sql = "INSERT INTO ESTANTE (nombre, idseccion) values (?,?)";
-        int idSeccion;
 
-
-        // Acción: Comprobar que la sección existe para guardar su id
-        idSeccion = buscarIdSeccion(seccion);
-        // Condición: Realizar la inserción de una nueva sección en caso de que no exista
-        if (idSeccion == 0) {
-            crearSeccion(seccion);
-        }
-        // Acción: Realizar la inserción con una sección ya existente
         try {
             ps = conexion.prepareStatement(sql);
             ps.setString(1, nombre);
-            ps.setInt(2, idSeccion);
+            ps.setInt(2, seccion);
             ps.execute();
             System.out.println("Estante insertado");
         } catch (SQLException e) {
@@ -80,7 +79,10 @@ public class ControlEstantes {
             ps = conexion.prepareStatement(confirmarIdSeccion);
             ps.setString(1, seccion);
             rs = ps.executeQuery();
-            idSeccion = rs.getInt("idseccion");
+            // Situation: La consulta mostró que la sección existe
+            if (rs.next()) {
+                idSeccion = rs.getInt("idseccion");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -102,6 +104,7 @@ public class ControlEstantes {
      */
     public Estante mostrarEstante(String nombre) {
         // Variables
+        Estante objEstante = new Estante();
         Connection conexion = ConexionBD.connectDatabase();
         PreparedStatement query;
         ResultSet rs;
@@ -112,13 +115,16 @@ public class ControlEstantes {
                     "SELECT e.idestante, e.nombre AS estante, s.nombre AS seccion FROM Estante e, Seccion s WHERE e.idseccion = s.idseccion AND e.nombre = ?;");
             query.setString(1, nombre);
             rs = query.executeQuery();
-            while (rs.next()) {
-                objEstante.setId((rs.getString("idestante")));
-                objEstante.setNombre((rs.getString("estante")));
-                objEstante.setSeccion((rs.getString("seccion")));
+            if (rs.next()) {
+                objEstante.setNombre(rs.getString("estante"));
+                objEstante.setSeccion(rs.getString("seccion"));
+                return objEstante;
             }
+            System.out.println("No hay ningún estante con esta nomenclatura");
+            return null;
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         } finally {
             try {
                 conexion.close();
@@ -126,8 +132,6 @@ public class ControlEstantes {
                 e.printStackTrace();
             }
         }
-
-        return objEstante;
     }
 
     /**
@@ -138,8 +142,8 @@ public class ControlEstantes {
     public List<Estante> mostrarEstantes() {
         // Variables
         Connection conexion = ConexionBD.connectDatabase();
-        PreparedStatement query;
-        ResultSet rs;
+        PreparedStatement query = null;
+        ResultSet rs = null;
 
         // Action: Realizar consulta con la base de datos
         try {
@@ -148,11 +152,12 @@ public class ControlEstantes {
 
             rs = query.executeQuery();
             while (rs.next()) {
-                objEstante.setId((rs.getString("idestante")));
-                objEstante.setNombre((rs.getString("estante")));
-                objEstante.setSeccion((rs.getString("seccion")));
-                listEstantes.add(objEstante);
+                Estante estante = new Estante();
+                estante.setNombre((rs.getString("estante")));
+                estante.setSeccion((rs.getString("seccion")));
+                listEstantes.add(estante);
             }
+            return listEstantes;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -163,8 +168,6 @@ public class ControlEstantes {
                 e.printStackTrace();
             }
         }
-
-        return listEstantes;
     }
 
     /**
@@ -175,33 +178,31 @@ public class ControlEstantes {
     public List<Seccion> mostrarSecciones() {
         // Variables
         Connection conexion = ConexionBD.connectDatabase();
-        PreparedStatement query;
-        ResultSet rs;
+        PreparedStatement query = null;
+        ResultSet rs = null;
 
         // Action: Realizar consulta con la base de datos
         try {
-            query = conexion.prepareStatement(
-                    "SELECT * FROM Seccion ORDER BY idseccion;");
-
+            query = conexion.prepareStatement("SELECT * FROM Seccion ORDER BY idseccion;");
             rs = query.executeQuery();
             while (rs.next()) {
-                objSeccion.setId((rs.getString("idseccion")));
-                objSeccion.setNombre((rs.getString("nombre")));
-                listSecciones.add(objSeccion);
+                Seccion seccion = new Seccion();
+                seccion.setNombre(rs.getString("nombre"));
+                listSecciones.add(seccion);
             }
+            return listSecciones;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e);
             return null;
         } finally {
             try {
                 conexion.close();
             } catch (SQLException e) {
-                System.err.println("Error: No se han podido mostrar las secciones");
-                e.printStackTrace();
+                System.err.println(e);
             }
         }
 
-        return listSecciones;
+
     }
 
     /**
@@ -211,13 +212,13 @@ public class ControlEstantes {
      */
     private void crearSeccion(String nombre) {
         Connection conexion = ConexionBD.connectDatabase();
-        PreparedStatement ps;
-        String sql = "INSERT INTO Seccion (nombre) values (?)";
+        PreparedStatement ps = null;
+        String sql = "INSERT INTO Seccion (nombre) values (?);";
 
         try {
             ps = conexion.prepareStatement(sql);
             ps.setString(1, nombre);
-            ps.executeQuery();
+            ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -227,6 +228,25 @@ public class ControlEstantes {
                 e.printStackTrace();
             }
         }
+    }
+
+    public int comprobarSeccion(String nombre) {
+        // Variables
+        Connection conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps;
+        ResultSet rs = null;
+        int idSeccion = 0;
+        String sql = "INSERT INTO Seccion (nombre) values (?)";
+
+        // Action: Corroborar si la sección existe
+        idSeccion = buscarIdSeccion(nombre);
+        // Situation: La sección no existe aún
+        if (idSeccion == 0) {
+            crearSeccion(nombre);
+            // Action: Guardamos el id para retornarlo
+            idSeccion = buscarIdSeccion(nombre);
+        }
+        return idSeccion;
     }
 
 }

@@ -5,7 +5,6 @@ package entities;
  *
  * @author Samuel Alcántara Chávez
  * @version 1.0
- *
  */
 public class Seccion {
 
@@ -65,5 +64,4 @@ public class Seccion {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 }
