@@ -1,133 +1,71 @@
 package entities;
 
-import java.util.Date;
 
-/**
- * 
- */
 public class Prestamo {
+    private String folio;
+    private java.sql.Date  fechaIngreso;
+    private java.sql.Date  fechaLimite;
+    private java.sql.Date  fechaEgreso;
+    private String idSocio;
+    private int idLibro;
 
-    /**
-     * Default constructor
-     */
+    public Prestamo(String folio, java.sql.Date  fechaIngreso, java.sql.Date  fechaLimite, java.sql.Date  fechaEgreso, String idSocio, int idLibro) {
+        this.folio = folio;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaLimite = fechaLimite;
+        this.fechaEgreso = fechaEgreso;
+        this.idSocio = idSocio;
+        this.idLibro = idLibro;
+    }
+
     public Prestamo() {
     }
 
-    /**
-     * 
-     */
-    private String folio;
-
-    /**
-     * 
-     */
-
-    /**
-     * 
-     */
-    private Date fechaIngreso;
-    /**
-     * 
-     */
-    private Date fechaLimite;
-
-    /**
-     * 
-     */
-    private Date fechaEgreso;
-
-    /**
-     * 
-     */
-    private Socio socio;
-
-    /**
-     * 
-     */
-    private Libro libro;
-
-    /**
-     * @return
-     */
     public String getFolio() {
-        return this.folio;
+        return folio;
     }
 
-    /**
-     * @return
-     */
-    public Date getFechaIngreso() {
-        return this.fechaIngreso;
-    }
-
-    /**
-     * @return
-     */
-    public Date getFechaLimite() {
-        return this.fechaLimite;
-    }
-
-    /**
-     * @return
-     */
-    public Date getFechaEgreso() {
-        return this.fechaEgreso;
-    }
-
-    /**
-     * @return
-     */
-    public Socio getSocio() {
-        return this.socio;
-    }
-
-    /**
-     * @return
-     */
-    public Libro getLibro() {
-        return this.libro;
-    }
-
-    /**
-     * @param folio
-     */
     public void setFolio(String folio) {
-        // TODO implement here
+        this.folio = folio;
     }
 
-    /**
-     * @param fechaIngreso
-     */
-    public void setFechaIngreso(Date fechaIngreso) {
-        // TODO implement here
+    public java.sql.Date  getFechaIngreso() {
+        return fechaIngreso;
     }
 
-    /**
-     * @param fechaLimite
-     */
-    public void setFechaLimite(Date fechaLimite) {
-        // TODO implement here
+    public void setFechaIngreso(java.sql.Date  fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 
-    /**
-     * @param fechaEgreso
-     */
-    public void setFechaEgreso(Date fechaEgreso) {
-        // TODO implement here
+    public java.sql.Date  getFechaLimite() {
+        return fechaLimite;
     }
 
-    /**
-     * @param socio
-     */
-    public void setSocio(Socio socio) {
-        // TODO implement here
+    public void setFechaLimite(java.sql.Date  fechaLimite) {
+        this.fechaLimite = fechaLimite;
     }
 
-    /**
-     * @param libro
-     */
-    public void setLibro(Libro libro) {
-        // TODO implement here
+    public java.sql.Date  getFechaEgreso() {
+        return fechaEgreso;
     }
 
+    public void setFechaEgreso(java.sql.Date  fechaEgreso) {
+        this.fechaEgreso = fechaEgreso;
+    }
+
+    public String getIdSocio() {
+        return idSocio;
+    }
+
+    public void setIdSocio(String idSocio) {
+        this.idSocio = idSocio;
+    }
+
+    public int getIdLibro() {
+        return idLibro;
+    }
+
+    public void setIdLibro(int idLibro) {
+        this.idLibro = idLibro;
+    }
 }
