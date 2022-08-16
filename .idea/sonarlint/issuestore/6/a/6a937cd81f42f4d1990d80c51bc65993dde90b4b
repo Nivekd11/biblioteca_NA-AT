@@ -1,0 +1,20 @@
+
+0
+java:S1220""Move this file to a named package.
+‡
+java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÙØ¤Şıÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(ıâÌ$
+M	java:S106"9Replace this use of System.out or System.err by a logger.(¸˜
+f	java:S128"LEnd this switch case with an unconditional break, return or throw statement.(úâúÿÿÿÿ
+7	java:S131""Add a default case to this switch.(°€àâ
+K
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ
+G
+java:S1128",Remove this unused import 'java.time.Month'.(¤‚Éøÿÿÿÿ
+J
+java:S1128"/Remove this unused import 'control.ConexionBD'.(Ë¢óÀşÿÿÿÿ
+N
+java:S1128	"3Remove this unused import 'control.Control_Libros'.(éÏ×®şÿÿÿÿ
+A
+java:S1128
+"+Remove this unused import 'entities.Socio'.(˜—’¶

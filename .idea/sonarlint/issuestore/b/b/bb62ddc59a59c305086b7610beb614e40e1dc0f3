@@ -1,0 +1,193 @@
+
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¤íÛ'
+w
+java:S2293¨"YReplace the type specification in this constructor call with the diamond operator ("<>").(Øüë—8ğşĞÖ¨0
+|
+java:S2293©"YReplace the type specification in this constructor call with the diamond operator ("<>").(ê…“«øÿÿÿÿ8òşĞÖ¨0
+|
+java:S2293ª"YReplace the type specification in this constructor call with the diamond operator ("<>").(”€ô¡üÿÿÿÿ8ôşĞÖ¨0
+|
+java:S2293ü"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÃÎùæûÿÿÿÿ8öşĞÖ¨0
+|
+java:S2293ı"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘ñÅ¹ûÿÿÿÿ8øşĞÖ¨0
+w
+java:S2293ş"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ìº‰8øşĞÖ¨0
+|
+java:S2293Î"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÃÎùæûÿÿÿÿ8æ’í›©0
+|
+java:S2293Ï"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘ñÅ¹ûÿÿÿÿ8æ’í›©0
+w
+java:S2293Ğ"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ìº‰8æ’í›©0
+|
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÃÎùæûÿÿÿÿ8ç’í›©0
+|
+java:S2293Ÿ"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘ñÅ¹ûÿÿÿÿ8ç’í›©0
+w
+java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(Ìº‰8ç’í›©0
+|
+java:S2293é"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯Û½ÿÿÿÿÿ8øşĞÖ¨0
+|
+java:S2293…"YReplace the type specification in this constructor call with the diamond operator ("<>").(ìÇúµşÿÿÿÿ8ùşĞÖ¨0
+i
+java:S1192°"KDefine a constant instead of duplicating this literal "ejemplares" 4 times.(±À¯ˆ8ê’í›©0
+k
+java:S1192È"HDefine a constant instead of duplicating this literal "estante" 4 times.(ƒ»¡ıÿÿÿÿ8”“í›©0
+e
+java:S1192®"GDefine a constant instead of duplicating this literal "titulo" 4 times.(çÆŒ‰8”“í›©0
+e
+java:S1192‹"GDefine a constant instead of duplicating this literal "nombre" 7 times.(´¤‹¾8ûşĞÖ¨0
+k
+java:S1192±"HDefine a constant instead of duplicating this literal "edicion" 4 times.(Š“Áøÿÿÿÿ8•“í›©0
+j
+java:S1192²"LDefine a constant instead of duplicating this literal "ideditorial" 6 times.(Ó¢½ç8ûşĞÖ¨0
+d
+java:S1192¯"FDefine a constant instead of duplicating this literal "valor" 4 times.(à†ûı8–“í›©0
+i
+java:S1192¼"FDefine a constant instead of duplicating this literal "autor" 4 times.(øË»½ûÿÿÿÿ8–“í›©0
+k
+java:S1192Ó"HDefine a constant instead of duplicating this literal "seccion" 4 times.(şøË±üÿÿÿÿ8–“í›©0
+f
+java:S1192«"HDefine a constant instead of duplicating this literal "idlibro" 5 times.(ˆ÷õš8–“í›©0
+W
+java:S1141I"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8üşĞÖ¨0
+X
+java:S1141·"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÿĞÖ¨0
+X
+java:S1141Ã"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÿĞÖ¨0
+X
+java:S1141Î"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÿĞÖ¨0
+X
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‚ÿĞÖ¨0
+X
+java:S1141š"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‚ÿĞÖ¨0
+X
+java:S1141¥"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‚ÿĞÖ¨0
+X
+java:S1141à"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8™“í›©0
+X
+java:S1141ì"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8™“í›©0
+X
+java:S1141÷"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8™“í›©0
+X
+java:S1141°"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8š“í›©0
+X
+java:S1141¼"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8š“í›©0
+X
+java:S1141Ç"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8š“í›©0
+n	java:S117Ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½8¤“í›©0
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÖâÊ§ıÿÿÿÿ
+r
+java:S2095†"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8‹–ÑÖ¨0
+r
+java:S2095›"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8•¨í›©0
+r
+java:S2095ö"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8‹–ÑÖ¨0
+r
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8‹–ÑÖ¨0
+r
+java:S2095±"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8•¨í›©0
+k
+java:S2095Ä"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ
+r
+java:S2095Ã"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8•¨í›©0
+r
+java:S2095¦"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8‹–ÑÖ¨0
+r
+java:S2095½"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8•¨í›©0
+r
+java:S2095Ü"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8–¨í›©0
+r
+java:S2095Ï"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8”¨í›©0
+l
+java:S2095J"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ôıáÁ8‹–ÑÖ¨0
+q
+java:S2095 "OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8–¨í›©0
+q
+java:S2095<"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ôş’¤ıÿÿÿÿ8‹–ÑÖ¨0
+q
+java:S2095g"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8•¨í›©0
+r
+java:S2095‹"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8‹–ÑÖ¨0
+k
+java:S2095¢"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ
+r
+java:S2095á"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8Š–ÑÖ¨0
+r
+java:S2095Ò"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8•¨í›©0
+k
+java:S2095È"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ
+k
+java:S2095í"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ
+r
+java:S2095ø"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8•¨í›©0
+r
+java:S2095§"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8‹–ÑÖ¨0
+r
+java:S2095ï"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8•¨í›©0
+r
+java:S2095€"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ8–¨í›©0
+k
+java:S2095¥"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ
+k
+java:S2095¸"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ
+M
+java:S1135"2Complete the task associated to this TODO comment.(ÉÜ¾Áûÿÿÿÿ
+S	java:S106%"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ
+S	java:S106*"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+M
+java:S11353"2Complete the task associated to this TODO comment.(ÉÜ¾Áûÿÿÿÿ
+S	java:S106O"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+S	java:S106S"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+S	java:S106X"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+K
+java:S1172`")Remove this unused method parameter "id".(“„ø›ÿÿÿÿÿ8¥è“§©0
+M
+java:S1135a"2Complete the task associated to this TODO comment.(ÉÜ¾Áûÿÿÿÿ
+S	java:S106r"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ
+S	java:S106x"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+N
+java:S1135"2Complete the task associated to this TODO comment.(ÉÜ¾Áûÿÿÿÿ
+T	java:S106‹"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+T	java:S106"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+[	java:S106¿"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8Å–ÑÖ¨0
+T	java:S106Ë"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ
+[	java:S106Ö"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8È–ÑÖ¨0
+T	java:S106á"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+I
+java:S1168â"+Return an empty collection instead of null.(¥¹ï8É–ÑÖ¨0
+T	java:S106è"9Replace this use of System.out or System.err by a logger.(½À–Éøÿÿÿÿ
+T	java:S106é"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+N
+java:S1135÷"2Complete the task associated to this TODO comment.(ÉÜ¾Áûÿÿÿÿ
+[	java:S106–"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8Ò–ÑÖ¨0
+[	java:S106¢"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8Ó–ÑÖ¨0
+[	java:S106­"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8Ô–ÑÖ¨0
+[	java:S106¶"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Õ–ÑÖ¨0
+[	java:S106½"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Ö–ÑÖ¨0
+U
+java:S1135É"2Complete the task associated to this TODO comment.(ÉÜ¾Áûÿÿÿÿ8¯¨í›©0
+[	java:S106è"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8Ø–ÑÖ¨0
+[	java:S106ô"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8Û–ÑÖ¨0
+[	java:S106ÿ"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8³¨í›©0
+[	java:S106ˆ"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Ù–ÑÖ¨0
+[	java:S106"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Ü–ÑÖ¨0
+U
+java:S1135™"2Complete the task associated to this TODO comment.(ÉÜ¾Áûÿÿÿÿ8µ¨í›©0
+[	java:S106¸"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8·¨í›©0
+[	java:S106Ä"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8¸¨í›©0
+[	java:S106Ï"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8¹¨í›©0
+[	java:S106Ø"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8¹¨í›©0
+[	java:S106à"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8º¨í›©0
+[	java:S106ø"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8»¨í›©0
+[	java:S106ı"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8¼¨í›©0
+[	java:S106”"9Replace this use of System.out or System.err by a logger.(¨¶ÑÍşÿÿÿÿ8½¨í›©0
+[	java:S106™"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8½¨í›©0
+[	java:S106°"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8¿¨í›©0
+[	java:S106µ"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8¿¨í›©0
+[	java:S106Ê"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8À¨í›©0
+[	java:S106Ï"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Á¨í›©0
+[	java:S106ã"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Â¨í›©0
+[	java:S106è"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Â¨í›©0
+[	java:S106ÿ"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Ä¨í›©0
+[	java:S106„"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ8Ä¨í›©0

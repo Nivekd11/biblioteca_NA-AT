@@ -148,7 +148,7 @@ public class Control_Socios {
     }
 
     /**
-     * @param id
+     * @param curp
      * @return
      */
     public Socio mostrarSocio(String curp) {

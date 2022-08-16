@@ -241,6 +241,10 @@ public class Libro {
         this.autor = autor;
     }
 
+    public void addEstante (String estante){
+        this.estante.add(estante);
+    }
+
     public String toString() {
         return "idLibro: " + idLibro + "\nISBN: " + isbn + "\nTitulo: " + titulo + "\nPrecio: " + valor
                 + "\n#Ejemplares: " + ejemplares + "\nEdicion: " + edicion + "\nIdEditorial: " + idEditorial
