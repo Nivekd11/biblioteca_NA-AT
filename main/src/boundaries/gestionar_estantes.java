@@ -24,9 +24,9 @@ public class gestionar_estantes {
     }
 
     // Variables
-    private ControlEstantes objControl;
+    private final ControlEstantes objControl;
 
-    private Scanner scan;
+    private final Scanner scan;
 
     public void menu() {
         // Variables
@@ -43,9 +43,9 @@ public class gestionar_estantes {
     public void seleccionarOpcion(int opcion) {
         switch (opcion) {
             // Situation: Crear un nuevo estante
-            case 1: {
+            case 1 -> {
                 // Variables
-                String idSeccion = "";
+                String idSeccion;
                 Estante estante = new Estante();
                 Seccion seccion = new Seccion();
 
@@ -56,21 +56,21 @@ public class gestionar_estantes {
                 // Action: Mostrar la sección a la que podría pertenecer.
                 mostrarSecciones(objControl.mostrarSecciones());
                 System.out.print("\n\n\t¿A qué sección pertenecerá? (Si no existe la sección deseada puedes agregar una nueva): ");
-                // Action: Agregar nombre de la seccón
+                // Action: Agregar nombre de la sección
                 seccion.setNombre(scan.next());
                 // Action: Agregar el registro de la sección seleccionada
                 idSeccion = String.valueOf(objControl.comprobarSeccion(seccion.getNombre()));
-                // Action: Asignar el id de la sección registrada
+                // Action: Asignar el ID de la sección registrada
                 seccion.setId(idSeccion);
                 // Action: Crear el estante con la información de su sección correspondiente
                 objControl.crearEstante(estante.getNombre(), Integer.parseInt(seccion.getId()));
-                System.out.println("\n\n\nNuevo estante asignado\n\n\tEstante: " + estante.getNombre() + "\n\tSección: " + seccion.getNombre() + "\n\tId Seccion: " + seccion.getId() + "\n\n");
-                break;
+                System.out.println("\n\n\nNuevo estante asignado\n\n\tEstante: " + estante.getNombre() + "\n\tSección: " + seccion.getNombre() + "\n\tId Sección: " + seccion.getId() + "\n\n");
             }
+
             // Situation: Mostrar información de un estante
-            case 2: {
+            case 2 -> {
                 // Variables
-                String estante = "";
+                String estante;
 
                 System.out.print("\n\nBuscar información del estante\n\n");
                 System.out.print("Escribe la nomenclatura del estante (Ejemplo: A-23): ");
@@ -78,18 +78,20 @@ public class gestionar_estantes {
                 Estante objEstante = objControl.mostrarEstante(estante);
                 System.out.println("\n\n---------------------------------");
                 System.out.println("\t\tEstante: " + objEstante.getNombre());
-                System.out.println("\t\tSeccion: " + objEstante.getSeccion());
+                System.out.println("\t\tSección: " + objEstante.getSeccion());
                 System.out.println("---------------------------------");
-                break;
+
             }
+
             // Situation: Mostrar información de todos los estantes
-            case 3: {
+            case 3 -> {
                 System.out.print("\n\nEstantes actuales\n\n");
                 mostrarSEstantes(objControl.mostrarEstantes());
-                break;
+
             }
+
             // Situation: Agregar libro al estante
-            case 4: {
+            case 4 -> {
                 // Variables
                 Control_Libros objControlLibros = new Control_Libros();
                 Libro libro;
@@ -99,22 +101,22 @@ public class gestionar_estantes {
                 System.out.print("\n\nIngrese el ISBN del libro: ");
                 isbn = scan.next();
                 libro = objControlLibros.mostrarLibroPorISBN(isbn);
-                System.out.print("Información del libro:\n\n" + libro.toString()+ "\n\n\t¿Deseas asignar este libro a un nuevo estante? [S/N]: ");
+                System.out.print("Información del libro:\n\n" + libro.toString() + "\n\n\t¿Deseas asignar este libro a un nuevo estante? [S/N]: ");
                 respuesta = scan.next();
                 System.out.println("Respuesta: " + respuesta);
-                while(!"s".equalsIgnoreCase(respuesta) && !"n".equalsIgnoreCase(respuesta)){
+                while (!"s".equalsIgnoreCase(respuesta) && !"n".equalsIgnoreCase(respuesta)) {
                     System.out.print("Respuesta no admitida, intente nuevamente [S/N]: ");
                     respuesta = scan.next().toLowerCase();
                 }
-                if (respuesta.equalsIgnoreCase("S")){
+                if (respuesta.equalsIgnoreCase("S")) {
                     System.out.print("\n\n\t¿A qué estante quieres agregarlo?: ");
                     respuesta = scan.next();
                     libro.addEstante(respuesta);
                     objControlLibros.actualizarLibro(libro, libro.getIdLibro());
                     System.out.println("\n\n\tEstante agregado al libro");
-                    System.out.println(libro.toString());
+                    System.out.println(libro);
                 }
-                break;
+
             }
         }
     }
@@ -132,7 +134,7 @@ public class gestionar_estantes {
         for (Estante estante : estantes) {
             System.out.println("\t---------------------------------");
             System.out.println("\t\tEstante: " + estante.getNombre());
-            System.out.println("\t\tSeccion: " + estante.getSeccion());
+            System.out.println("\t\tSección: " + estante.getSeccion());
             System.out.println("\t---------------------------------");
         }
         estantes.clear();

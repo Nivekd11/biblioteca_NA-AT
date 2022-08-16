@@ -11,7 +11,6 @@ import entities.Socio;
 
 public class App {
     public static void main(String[] args) throws Exception {
-
         gestionar_usuarios vistaUsuarios = new gestionar_usuarios();
         gestionar_libros vistaLibros = new gestionar_libros();
         gestionar_estantes vistaEstantes = new gestionar_estantes();
@@ -20,7 +19,7 @@ public class App {
         Scanner entrada = new Scanner(System.in);
         int opcion;
         do {
-            System.out.println("Digite la opcion que desea.\n1. Menu socios.\n2. Menu libros.\n3. Menu Estantes\n");
+            System.out.println("Digite la opción que desea.\n1. Menu socios.\n2. Menu libros.\n3. Menu Estantes\n");
             opcion = entrada.nextInt();
             switch (opcion) {
                 case 1:
