@@ -1,6 +1,8 @@
 package boundaries;
 
+import control.Control_Libros;
 import control.Control_Prestamos;
+import entities.Libro;
 import entities.Prestamo;
 
 import java.sql.Date;
@@ -126,11 +128,15 @@ public class gestionar_préstamos {
         } else {
             tipoPerdida = "Estropeado";
         }
+        Control_Libros objControlLibro=new Control_Libros();
+        Prestamo prestamo = objControl.mostrarPrestamo(folio);
+        Libro libro = objControlLibro.mostrarLibroPorId(prestamo.getIdLibro());
+        System.out.println("El precio del libro "+libro.getTitulo()+" es de: "+libro.getValor());
         System.out.println("Digite el costo del libro:");
         costo = entrada.nextFloat();
         Date fechaIngreso = new Date(System.currentTimeMillis());
         //objControl.actuaLizarPrestamo(folio, new  java.sql.Date(fechaIngreso.getTime()) );
-        Prestamo prestamo = objControl.mostrarPrestamo(folio);
+        prestamo = objControl.mostrarPrestamo(folio);
         //prestamo.toString();
         if (prestamo != null) {
             int milisecondsByDay = 86400000;

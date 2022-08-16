@@ -308,7 +308,7 @@ public class Control_Prestamos {
         conexion = ConexionBD.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT penalizacion.estatus,penalizacion.tipo,penalizacion.fecha_creacion,penalizacion.costo,libro.titulo from prestamo INNER JOIN penalizacion on (prestamo.folio=penalizacion.idprestamo) INNER JOIN libro on (prestamo.idlibro= libro.idlibro) WHERE prestamo.idsocio = ? and penalizacion.estatus != 'Cumplida';";
+        String sql = "SELECT penalizacion.estatus,penalizacion.tipo,penalizacion.fecha_creacion,penalizacion.costo,libro.titulo,socio.nombre,socio.correo from prestamo INNER JOIN penalizacion on (prestamo.folio=penalizacion.idprestamo) INNER JOIN libro on (prestamo.idlibro= libro.idlibro) INNER JOIN socio on (prestamo.idsocio = socio.curp) WHERE prestamo.idsocio = ? and penalizacion.estatus != 'Cumplida';";
          try {
             ps = conexion.prepareStatement(sql);
             ps.setString(1,curp );
@@ -344,18 +344,20 @@ public class Control_Prestamos {
         conexion = ConexionBD.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT penalizacion.estatus,penalizacion.tipo,penalizacion.fecha_creacion,penalizacion.costo,libro.titulo from prestamo INNER JOIN penalizacion on (prestamo.folio=penalizacion.idprestamo) INNER JOIN libro on (prestamo.idlibro= libro.idlibro) penalizacion.estatus != 'Cumplida';";
+        String sql = "SELECT penalizacion.estatus,penalizacion.tipo,penalizacion.fecha_creacion,penalizacion.costo,libro.titulo,socio.nombre,socio.correo from prestamo INNER JOIN penalizacion on (prestamo.folio=penalizacion.idprestamo) INNER JOIN libro on (prestamo.idlibro= libro.idlibro) INNER JOIN socio on (prestamo.idsocio = socio.curp)  WHERE penalizacion.estatus != 'Cumplida';";
          try {
             ps = conexion.prepareStatement(sql);
             rs = ps.executeQuery();
-
+            int i=0;
             while (rs.next()) {
-                data+=data+"\n*********************************";
+                data=data+"\n********************************* "+i++;
                 data=data + "\nEstatus: "+rs.getString("estatus");
                 data=data + "\nTipo: "+rs.getString("tipo");
                 data=data + "\nFecha de creacion: "+rs.getDate("fecha_creacion").toString();
                 data=data + "\nCosto: "+rs.getFloat("costo");
-                data=data + "\nTitulo: "+rs.getString("titulo")+"\n\n";
+                data=data + "\nTitulo: "+rs.getString("titulo");
+                data=data + "\nNombre: "+rs.getString("nombre");
+                data=data + "\nCorreo: "+rs.getString("correo")+"\n\n";
             }
         
             return data;
@@ -373,5 +375,7 @@ public class Control_Prestamos {
 
         return "";
     }
+
+    
 
 }
