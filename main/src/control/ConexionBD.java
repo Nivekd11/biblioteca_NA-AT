@@ -30,7 +30,7 @@ public class ConexionBD {
                     url,
                     user, password);
             boolean valid = connection.isValid(50000);
-            // System.out.println(valid ? "TEST OK" : "TEST FAIL");
+            //System.out.println(valid ? "TEST OK" : "TEST FAIL");
 
             return connection;
 
