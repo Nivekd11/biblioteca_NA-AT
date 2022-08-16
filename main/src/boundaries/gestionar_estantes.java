@@ -35,7 +35,7 @@ public class gestionar_estantes {
             System.out.println("\nManejo de Estantes\n\nDigita la opción que deseas utilizar.\n\n\t1. Crear nuevo estante.\n\t2. Mostrar información de un estante.\n\t3. Mostrar todos los estantes.\n\t4. Agregar libro a estante.\n\n\t5. Regresar al menú principal");
             System.out.print("Tu elección: ");
             seleccion = scan.nextInt(10);
-            if (objControl.validarOpcionMenu(seleccion)){
+            if (objControl.validarOpcionMenu(seleccion)) {
                 seleccionarOpcion(seleccion);
             } else {
                 while (!objControl.validarOpcionMenu(seleccion)) {
@@ -45,7 +45,7 @@ public class gestionar_estantes {
                 }
                 seleccionarOpcion(seleccion);
             }
-           
+
         } while (seleccion > 0 && seleccion < 5);
     }
 
@@ -87,6 +87,11 @@ public class gestionar_estantes {
                 // Action: Pide al usuario información válida del estante
                 scanEstante = scanEstante();
                 objEstante = objControl.mostrarEstante(scanEstante);
+                while (objEstante==null){
+                    System.out.println("No hay ningún estante con esta nomenclatura");
+                    scanEstante = scanEstante();
+                    objEstante = objControl.mostrarEstante(scanEstante);
+                }
                 System.out.println("\n\n---------------------------------");
                 System.out.println("\t\tEstante: " + objEstante.getNombre());
                 System.out.println("\t\tSección: " + objEstante.getSeccion());
@@ -119,9 +124,8 @@ public class gestionar_estantes {
                 }
                 if (respuesta.equalsIgnoreCase("S")) {
                     respuesta = scanEstante();
-                    libro.addEstante(respuesta);
-                    objControlLibros.actualizarLibro(libro, libro.getIdLibro());
-                    System.out.println("\n\n\tEstante agregado al libro");
+                    objControl.agregarLibroAEstante(libro.getIdLibro(), Integer.valueOf(respuesta));
+                    System.out.println("\n\n\tLibro agregado al estante");
                     System.out.println(libro);
                 }
                 break;
@@ -162,15 +166,5 @@ public class gestionar_estantes {
         }
 
         return estantes;
-    }
-
-    private int scanOpcionesMenu(int opcion) {
-        while (!objControl.validarOpcionMenu(opcion)) {
-            System.out.println("Que ingreses un formato válido >:c");
-            System.out.print("La opción que seleccionaste no es válida, intenta nuevamente (Ejemplo: 3): ");
-            opcion = scan.nextInt();
-        }
-
-        return opcion;
     }
 }

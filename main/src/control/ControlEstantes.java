@@ -61,6 +61,35 @@ public class ControlEstantes {
     }
 
     /**
+     * Método para crear un nuevo estante.
+     *
+     * @param idLibro ID del Libro
+     * @param idEstante  ID del estante
+     */
+    public void agregarLibroAEstante(int idLibro, int idEstante) {
+        Connection conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps;
+        String sql = "INSERT INTO ESTANTE_LIBRO (idEstante, idLibro) values (?,?)";
+
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1,  idLibro);
+            ps.setInt(2, idEstante);
+            ps.execute();
+            System.out.println("Libro insertado al estante correctamente");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    /**
      * Método para obtener el id de una Sección.
      *
      * @param seccion Nombre de la sección que se va a buscar
@@ -119,9 +148,10 @@ public class ControlEstantes {
                 objEstante.setNombre(rs.getString("estante"));
                 objEstante.setSeccion(rs.getString("seccion"));
                 return objEstante;
+            } else {
+                return null;
             }
-            System.out.println("No hay ningún estante con esta nomenclatura");
-            return null;
+
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
