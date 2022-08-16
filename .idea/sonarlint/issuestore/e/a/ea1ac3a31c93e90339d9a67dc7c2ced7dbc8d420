@@ -1,0 +1,57 @@
+
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ñ‚ñĞüÿÿÿÿ
+n
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ä‚Š
+k
+java:S2095Û"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ
+k
+java:S2095–"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ı†úÚúÿÿÿÿ
+j
+java:S2095."OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(×ÿš™üÿÿÿÿ
+e
+java:S2095O"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(çšÔ
+e
+java:S2095º"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¼ê[
+j
+java:S2095r"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ı†úÚúÿÿÿÿ
+W
+java:S1117)"<Rename "conexion" which hides the field declared at line 22.(²ãÂˆıÿÿÿÿ
+N	java:S1062"9Replace this use of System.out or System.err by a logger.(óŠÄ²
+W
+java:S1117G"<Rename "conexion" which hides the field declared at line 22.(²ãÂˆıÿÿÿÿ
+Y
+java:S1117k">Rename "objEstante" which hides the field declared at line 23.(“Â÷¡ıÿÿÿÿ
+W
+java:S1117l"<Rename "conexion" which hides the field declared at line 22.(²ãÂˆıÿÿÿÿ
+Z	java:S106{"9Replace this use of System.out or System.err by a logger.(–ŠŸ‰ûÿÿÿÿ8ò©0
+X
+java:S1117"<Rename "conexion" which hides the field declared at line 22.(²ãÂˆıÿÿÿÿ
+B
+java:S1168£"+Return an empty collection instead of null.(¥¹ï
+X
+java:S1117´"<Rename "conexion" which hides the field declared at line 22.(²ãÂˆıÿÿÿÿ
+T	java:S106Ã"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+B
+java:S1168Ä"+Return an empty collection instead of null.(¥¹ï
+T	java:S106É"9Replace this use of System.out or System.err by a logger.(Şàš¬øÿÿÿÿ
+X
+java:S1117Ö"<Rename "conexion" which hides the field declared at line 22.(²ãÂˆıÿÿÿÿ
+N
+java:S1854ï"7Remove this useless assignment to local variable "sql".(™Ù§¬
+X
+java:S1854ë"<Remove this useless assignment to local variable "conexion".(²ãÂˆıÿÿÿÿ
+X
+java:S1117ë"<Rename "conexion" which hides the field declared at line 22.(²ãÂˆıÿÿÿÿ
+I
+java:S1481ë"-Remove this unused "conexion" local variable.(²ãÂˆıÿÿÿÿ
+>
+java:S1481ì"'Remove this unused "ps" local variable.(ãö˜¤
+C
+java:S1481í"'Remove this unused "rs" local variable.(ÀÇÄûÿÿÿÿ
+?
+java:S1481ï"(Remove this unused "sql" local variable.(™Ù§¬
+I
+java:S1068".Remove this unused "objEstante" private field.(àµµşøÿÿÿÿ
+D
+java:S1068".Remove this unused "objSeccion" private field.(€Ë©Í
