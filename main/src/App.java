@@ -45,19 +45,6 @@ public class App {
 
             }
         } while (opcion < 5);
-        // String Dateinicio     = "2022-08-08";
-        // SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-        
-        //     Date fechaInicio      =   new java.util.Date(date.parse(Dateinicio).getTime());
-        
-        
-        // // La fecha actual
-        // Date fechaactual = new Date(System.currentTimeMillis());
-        // int milisecondsByDay = 86400000;
-        // int dias = (int) ((fechaInicio.getTime()-fechaactual.getTime()) / milisecondsByDay);
-        
-        // System.out.println(dias);
-
 
     }
 
