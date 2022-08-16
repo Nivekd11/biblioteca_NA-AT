@@ -14,6 +14,10 @@ import java.util.Scanner;
  */
 public class gestionar_estantes {
 
+    // Variables
+    private final ControlEstantes objControl;
+    private final Scanner scan;
+
     /**
      * Default constructor
      */
@@ -22,11 +26,6 @@ public class gestionar_estantes {
 
         this.scan = new Scanner(System.in);
     }
-
-    // Variables
-    private final ControlEstantes objControl;
-
-    private final Scanner scan;
 
     public void menu() {
         // Variables
@@ -43,7 +42,7 @@ public class gestionar_estantes {
     public void seleccionarOpcion(int opcion) {
         switch (opcion) {
             // Situation: Crear un nuevo estante
-            case 1 -> {
+            case 1:
                 // Variables
                 String idSeccion;
                 Estante estante = new Estante();
@@ -65,33 +64,33 @@ public class gestionar_estantes {
                 // Action: Crear el estante con la información de su sección correspondiente
                 objControl.crearEstante(estante.getNombre(), Integer.parseInt(seccion.getId()));
                 System.out.println("\n\n\nNuevo estante asignado\n\n\tEstante: " + estante.getNombre() + "\n\tSección: " + seccion.getNombre() + "\n\tId Sección: " + seccion.getId() + "\n\n");
-            }
+                break;
+
 
             // Situation: Mostrar información de un estante
-            case 2 -> {
+            case 2:
                 // Variables
-                String estante;
+                String estantes;
 
                 System.out.print("\n\nBuscar información del estante\n\n");
                 System.out.print("Escribe la nomenclatura del estante (Ejemplo: A-23): ");
-                estante = scan.next();
-                Estante objEstante = objControl.mostrarEstante(estante);
+                estantes = scan.next();
+                Estante objEstante = objControl.mostrarEstante(estantes);
                 System.out.println("\n\n---------------------------------");
                 System.out.println("\t\tEstante: " + objEstante.getNombre());
                 System.out.println("\t\tSección: " + objEstante.getSeccion());
                 System.out.println("---------------------------------");
 
-            }
+                break;
 
             // Situation: Mostrar información de todos los estantes
-            case 3 -> {
+            case 3:
                 System.out.print("\n\nEstantes actuales\n\n");
                 mostrarSEstantes(objControl.mostrarEstantes());
-
-            }
+                break;
 
             // Situation: Agregar libro al estante
-            case 4 -> {
+            case 4:
                 // Variables
                 Control_Libros objControlLibros = new Control_Libros();
                 Libro libro;
@@ -116,8 +115,7 @@ public class gestionar_estantes {
                     System.out.println("\n\n\tEstante agregado al libro");
                     System.out.println(libro);
                 }
-
-            }
+                break;
         }
     }
 

@@ -64,7 +64,7 @@ public class ControlEstantes {
      * Método para obtener el id de una Sección.
      *
      * @param seccion Nombre de la sección que se va a buscar
-     * @return int -> Identificador de la sección.
+     * @return int → Identificador de la sección.
      */
     private int buscarIdSeccion(String seccion) {
         //Variables
@@ -100,7 +100,7 @@ public class ControlEstantes {
      * Método para obtener la información de un estante específico.
      *
      * @param nombre Identificador del estante
-     * @return Estante -> Información del estante.
+     * @return Estante → Información del estante.
      */
     public Estante mostrarEstante(String nombre) {
         // Variables
@@ -137,7 +137,7 @@ public class ControlEstantes {
     /**
      * Método para obtener la información de todos los estantes.
      *
-     * @return List<Estante> -> Lista de estantes.
+     * @return List<Estante> → Lista de estantes.
      */
     public List<Estante> mostrarEstantes() {
         // Variables
@@ -173,7 +173,7 @@ public class ControlEstantes {
     /**
      * Método para obtener la información de todas las secciones.
      *
-     * @return List<Seccion> -> Lista de secciones.
+     * @return List<Seccion> → Lista de secciones.
      */
     public List<Seccion> mostrarSecciones() {
         // Variables
