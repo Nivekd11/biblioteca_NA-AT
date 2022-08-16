@@ -90,23 +90,28 @@ public class Control_Socios {
     public void eliminarSocio(String curp) {
         conexion = ConexionBD.connectDatabase();
         PreparedStatement ps = null;
-        String sql = "DELETE FROM socio WHERE curp=?;";
+        if(mostrarSocio(curp) != null ){
+            String sql = "DELETE FROM socio WHERE curp=?;";
 
-        try {
-            ps = conexion.prepareStatement(sql);
-            ps.setString(1, curp);
-            ps.executeQuery();
-            System.out.println("El socio se a actualizado con exito");
-        } catch (Exception e) {
-           // System.err.println(e);
-
-        } finally {
             try {
-                conexion.close();
-            } catch (SQLException e) {
-                // System.err.println(e);
+                ps = conexion.prepareStatement(sql);
+                ps.setString(1, curp);
+                ps.executeQuery();
+                System.out.println("El socio se a actualizado con exito");
+            } catch (Exception e) {
+            // System.err.println(e);
+
+            } finally {
+                try {
+                    conexion.close();
+                } catch (SQLException e) {
+                    // System.err.println(e);
+                }
             }
+        }else{
+            System.out.println("El socio no existe");
         }
+        
 
     }
 

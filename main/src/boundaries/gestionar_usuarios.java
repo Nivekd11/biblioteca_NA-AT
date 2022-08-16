@@ -56,7 +56,7 @@ public class gestionar_usuarios {
                 limpiarPantalla();
                 System.out.println("Escribe el CURP del Socio que deseas eliminar:");
                 String curp = entrada.next();
-                System.out.println("El socio se a eliminado con exito");
+                //System.out.println("El socio se a eliminado con exito");
                 //mostrarSocio(objControl.mostrarSocio(curp));
                 objControl.eliminarSocio(curp);
                 System.out.println("Presiones cualquier tecla y un enter para continuar....");
@@ -67,7 +67,9 @@ public class gestionar_usuarios {
                 limpiarPantalla();
                 System.out.println("Escribe el CURP del Socio que deseas actualizar:");
                 String curp = entrada.next();
-                objControl.actualizarSocio(actualizarSocio(objControl.mostrarSocio(curp)), curp);
+                Socio socio = actualizarSocio(objControl.mostrarSocio(curp));
+                if(socio!=null)
+                    objControl.actualizarSocio(socio, curp);
                 break;
             }
         }
@@ -128,7 +130,8 @@ public class gestionar_usuarios {
     }
 
     public Socio actualizarSocio(Socio socio) {
-        System.out.println("Digita 1 si deseas modificar o 0 si no");
+        if(socio !=null){
+            System.out.println("Digita 1 si deseas modificar o 0 si no");
         System.out.println("\n Deseas actualizar el CURP " + socio.geCurp());
         if (entrada.nextInt() > 0) {
             System.out.println("\nEscribe el CURP del socio:");
@@ -178,6 +181,13 @@ public class gestionar_usuarios {
             }
         }
         return socio;
+        }else{
+            System.out.println("El socio no se encuentra registrado\n\n");
+            System.out.println("Presiones cualquier tecla y un enter para continuar....");
+            entrada.next();
+            return null;
+        }
+        
     }
 
     public void limpiarPantalla() {
