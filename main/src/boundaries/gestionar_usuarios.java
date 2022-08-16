@@ -25,7 +25,7 @@ public class gestionar_usuarios {
     public void manejarMenu() {
         int opcion = 0;
         do {
-            // limpiarPantalla();
+            limpiarPantalla();
             System.out.println(
                     "Manejo de Socios \n\nDigita la opción que deseas utilizar.\n\n1. Buscar un soció\n2. Ver todos los socios\n3. Registrar a un soció\n4. Eliminar a un soció\n5. Modificar los datos de un soció\n6. Regresar al menu principal\n\nDigita la opción: ");
             opcion = entrada.nextInt(10);
@@ -56,9 +56,11 @@ public class gestionar_usuarios {
                 limpiarPantalla();
                 System.out.println("Escribe el CURP del Socio que deseas eliminar:");
                 String curp = entrada.next();
-                mostrarSocio(objControl.mostrarSocio(curp));
                 System.out.println("El socio se a eliminado con exito");
+                //mostrarSocio(objControl.mostrarSocio(curp));
                 objControl.eliminarSocio(curp);
+                System.out.println("Presiones cualquier tecla y un enter para continuar....");
+                entrada.next();
                 break;
             }
             case 5: {
@@ -66,15 +68,23 @@ public class gestionar_usuarios {
                 System.out.println("Escribe el CURP del Socio que deseas actualizar:");
                 String curp = entrada.next();
                 objControl.actualizarSocio(actualizarSocio(objControl.mostrarSocio(curp)), curp);
-                System.out.println("El socio se a actualizado con exito");
                 break;
             }
         }
     }
 
     public void mostrarSocio(Socio socio) {
-        System.out.println("Datos del Socio\n");
-        System.out.println(socio.toString());
+        if(socio == null){
+            System.out.println("El socio no existe, por favor registralo");
+            
+            
+        }
+        else{
+            System.out.println("Datos del Socio\n");
+        System.out.println(socio.toString()+"\n");
+        }
+        
+        System.out.println("Presiones cualquier tecla y un enter para continuar....");
         entrada.next();
     }
 
@@ -85,6 +95,7 @@ public class gestionar_usuarios {
             System.out.println(socio.toString());
             System.out.println("****************************************");
         }
+        System.out.println("Presiones cualquier tecla y un enter para continuar....");
         entrada.next();
     }
 

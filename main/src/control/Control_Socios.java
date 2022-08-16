@@ -40,7 +40,7 @@ public class Control_Socios {
             ps.executeQuery();
 
         } catch (Exception e) {
-            System.err.println(e);
+            //System.err.println(e);
 
         } finally {
             try {
@@ -72,7 +72,7 @@ public class Control_Socios {
             ps.executeQuery();
 
         } catch (Exception e) {
-            System.err.println(e);
+            //System.err.println(e);
 
         } finally {
             try {
@@ -96,9 +96,9 @@ public class Control_Socios {
             ps = conexion.prepareStatement(sql);
             ps.setString(1, curp);
             ps.executeQuery();
-
+            System.out.println("El socio se a actualizado con exito");
         } catch (Exception e) {
-            System.err.println(e);
+           // System.err.println(e);
 
         } finally {
             try {
