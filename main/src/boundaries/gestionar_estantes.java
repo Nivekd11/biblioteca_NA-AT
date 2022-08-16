@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
+ *xdxdxdx
  */
 public class gestionar_estantes {
 
