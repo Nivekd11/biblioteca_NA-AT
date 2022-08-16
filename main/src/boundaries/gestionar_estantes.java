@@ -32,11 +32,21 @@ public class gestionar_estantes {
         int seleccion;
 
         do {
-            System.out.println("\nManejo de Estantes\n\nDigita la opción que deseas utilizar.\n\n\t1. Crear nuevo estante.\n\t2. Mostrar información de un estante.\n\t3. Mostrar todos los estantes.\n\t4. Agregar libro a estante.\n");
+            System.out.println("\nManejo de Estantes\n\nDigita la opción que deseas utilizar.\n\n\t1. Crear nuevo estante.\n\t2. Mostrar información de un estante.\n\t3. Mostrar todos los estantes.\n\t4. Agregar libro a estante.\n\n\t5. Regresar al menú principal");
             System.out.print("Tu elección: ");
             seleccion = scan.nextInt(10);
-            seleccionarOpcion(seleccion);
-        } while (seleccion > 0 && seleccion < 6);
+            if (objControl.validarOpcionMenu(seleccion)){
+                seleccionarOpcion(seleccion);
+            } else {
+                while (!objControl.validarOpcionMenu(seleccion)) {
+                    System.out.println("Que ingreses un formato válido >:c");
+                    System.out.print("La opción que seleccionaste no es válida, intenta nuevamente (Ejemplo: 3): ");
+                    seleccion = scan.nextInt();
+                }
+                seleccionarOpcion(seleccion);
+            }
+           
+        } while (seleccion > 0 && seleccion < 5);
     }
 
     public void seleccionarOpcion(int opcion) {
@@ -70,12 +80,13 @@ public class gestionar_estantes {
             // Situation: Mostrar información de un estante
             case 2:
                 // Variables
-                String estantes;
+                Estante objEstante;
+                String scanEstante;
 
                 System.out.print("\n\nBuscar información del estante\n\n");
-                System.out.print("Escribe la nomenclatura del estante (Ejemplo: A-23): ");
-                estantes = scan.next();
-                Estante objEstante = objControl.mostrarEstante(estantes);
+                // Action: Pide al usuario información válida del estante
+                scanEstante = scanEstante();
+                objEstante = objControl.mostrarEstante(scanEstante);
                 System.out.println("\n\n---------------------------------");
                 System.out.println("\t\tEstante: " + objEstante.getNombre());
                 System.out.println("\t\tSección: " + objEstante.getSeccion());
@@ -102,14 +113,12 @@ public class gestionar_estantes {
                 libro = objControlLibros.mostrarLibroPorISBN(isbn);
                 System.out.print("Información del libro:\n\n" + libro.toString() + "\n\n\t¿Deseas asignar este libro a un nuevo estante? [S/N]: ");
                 respuesta = scan.next();
-                System.out.println("Respuesta: " + respuesta);
                 while (!"s".equalsIgnoreCase(respuesta) && !"n".equalsIgnoreCase(respuesta)) {
                     System.out.print("Respuesta no admitida, intente nuevamente [S/N]: ");
                     respuesta = scan.next().toLowerCase();
                 }
                 if (respuesta.equalsIgnoreCase("S")) {
-                    System.out.print("\n\n\t¿A qué estante quieres agregarlo?: ");
-                    respuesta = scan.next();
+                    respuesta = scanEstante();
                     libro.addEstante(respuesta);
                     objControlLibros.actualizarLibro(libro, libro.getIdLibro());
                     System.out.println("\n\n\tEstante agregado al libro");
@@ -136,5 +145,32 @@ public class gestionar_estantes {
             System.out.println("\t---------------------------------");
         }
         estantes.clear();
+    }
+
+    private String scanEstante() {
+        // Variables
+        String estantes;
+
+
+        System.out.print("Escribe la nomenclatura del estante (Ejemplo: A-23): ");
+        estantes = scan.next();
+        // Situation: El usuario no ingresa datos válidos referentes a una sección
+        while (!objControl.validarSeccion(estantes)) {
+            System.out.println("Que ingreses un formato válido >:c");
+            System.out.print("Escribe la nomenclatura del estante (Ejemplo: A-239): ");
+            estantes = scan.next();
+        }
+
+        return estantes;
+    }
+
+    private int scanOpcionesMenu(int opcion) {
+        while (!objControl.validarOpcionMenu(opcion)) {
+            System.out.println("Que ingreses un formato válido >:c");
+            System.out.print("La opción que seleccionaste no es válida, intenta nuevamente (Ejemplo: 3): ");
+            opcion = scan.nextInt();
+        }
+
+        return opcion;
     }
 }

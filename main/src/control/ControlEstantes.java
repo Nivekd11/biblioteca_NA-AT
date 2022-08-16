@@ -243,10 +243,30 @@ public class ControlEstantes {
         // Situation: La sección no existe aún
         if (idSeccion == 0) {
             crearSeccion(nombre);
-            // Action: Guardamos el id para retornarlo
+            // Action: Guardamos el ID para retornarlo
             idSeccion = buscarIdSeccion(nombre);
         }
         return idSeccion;
+    }
+
+    /**
+     * Método para validar la entrada de una sección.
+     *
+     * @param seccion Nombre de la sección
+     * @return Boolean
+     */
+    public Boolean validarSeccion(String seccion) {
+        return seccion.matches("[A-Z]-[0-9]{1,3}");
+    }
+
+    /**
+     * Método para validar la entrada de la sección.
+     *
+     * @param opcion Opción seleccionada
+     * @return Boolean
+     */
+    public Boolean validarOpcionMenu (int opcion) {
+        return String.valueOf(opcion).matches("[0-5]");
     }
 
 }
