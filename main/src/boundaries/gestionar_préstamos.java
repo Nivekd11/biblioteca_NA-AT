@@ -29,15 +29,18 @@ public class gestionar_préstamos {
 
         //System.out.flush();
         int opcion = 0;
-        while (opcion < 9) {
+        while (opcion != 9) {
             System.out.print("\033[H\033[2J");
             System.out.flush();
             System.out.print(
-                    "\nManejo de Prestamos \n\nDigita la opción que deseas utilizar.\n\n1. Generar Prestamo\n2. Buscar Prestamo\n3. Entrega de Libro\n4. Ver prestamos\n5. Crear Penalización \n6. Ver penalizaciones de socio \n7. Ver todas las penalizaciones \n8. Pagar deuda \n9. Salir\n");
+                    "\nManejo de Prestamos \n\nDigita la opción que deseas utilizar.\n\n1. Generar Prestamo\n2. Buscar Prestamo\n3. Entrega de Libro\n5. Crear Penalización \n6. Ver penalizaciones de socio \n7. Ver todas las penalizaciones \n8. Pagar deuda \n9. Salir\n");
             opcion = entrada.nextInt();
             switch (opcion) {
                 case 1:
                     generarPrestamo();
+                    break;
+                case 2:
+                    mostrarPrestamo();
                     break;
                 case 3:
                     entregarLibro();
@@ -94,6 +97,8 @@ public class gestionar_préstamos {
 
         } else {
             System.out.print("El socio no existe UnU\n");
+            System.out.println("Presione enter para continuar...");
+            String linea = entrada.nextLine();
         }
 
 
@@ -102,9 +107,22 @@ public class gestionar_préstamos {
     public void entregarLibro() {
         int folio = 0;
         limpiarPantalla();
+        String linea;
         System.out.println("Ingrese folio del prestamo: ");
         folio = entrada.nextInt();
-        LocalDate fechaIngreso = LocalDate.now();
+        int idlibro = objControl.buscarPrestamoPorFolio(folio);
+        if (idlibro != 0){
+            LocalDate fechaIngreso = LocalDate.now();
+            objControl.actuaLizarPrestamo(folio,java.sql.Date.valueOf(fechaIngreso),idlibro);
+            System.out.println("Presione enter para continuar...");
+            linea = entrada.nextLine();
+            linea = entrada.nextLine();
+        }else{
+            System.out.println("El prestamo con folio "+folio+" no existe");
+            System.out.println("Presione enter para continuar...");
+            linea = entrada.nextLine();
+            linea = entrada.nextLine();
+        }
 
     }
 
@@ -200,5 +218,32 @@ public class gestionar_préstamos {
         entrada.next();
     }
 
+    public  void mostrarPrestamo(){
+        int folio = 0;
+        limpiarPantalla();
+        String linea;
+        System.out.println("Ingrese folio del prestamo: ");
+        folio = entrada.nextInt();
+        int idlibro = objControl.buscarPrestamoPorFolio(folio);
+        if (idlibro != 0){
+            LocalDate fechaIngreso = LocalDate.now();
+            Prestamo prestamo = new Prestamo();
+            prestamo = objControl.mostrarPrestamo(folio);
+            System.out.println("\n*********************************");
+            System.out.println("Fecha de egreso: "+prestamo.getFechaEgreso());
+            System.out.println("Fecha limite: "+prestamo.getFechaLimite());
+            System.out.println("Fecha ingreso: "+prestamo.getFechaIngreso());
+            System.out.println("Socio: "+prestamo.getIdSocio());
+            System.out.println("Libro: "+prestamo.getIdLibro());
+            System.out.println("Presione enter para continuar...");
+            linea = entrada.nextLine();
+            linea = entrada.nextLine();
+        }else{
+            System.out.println("El prestamo con folio "+folio+" no existe");
+            System.out.println("Presione enter para continuar...");
+            linea = entrada.nextLine();
+            linea = entrada.nextLine();
+        }
+    }
 
 }
