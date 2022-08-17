@@ -108,7 +108,7 @@ public class Control_Libros {
             ps.setInt(5, libro.getIdEditorial());
             ps.setString(6, libro.getIsbn());
             ps.setInt(7, libro.getIdLibro());
-            libro.getEstante()
+            libro.getEstante();
             ps.executeUpdate();
 
         } catch (SQLException e) {

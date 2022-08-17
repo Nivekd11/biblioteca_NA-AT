@@ -7,9 +7,9 @@ public class ConexionBD {
 
     public static Connection connectDatabase() {
 
-        String host = "20.25.166.209";
+        String host = "20.12.208.124";
         String port = "5432";
-        String database = "biblioteca1";
+        String database = "biblioteca";
         String user = "postgres";
         String password = "root";
 
