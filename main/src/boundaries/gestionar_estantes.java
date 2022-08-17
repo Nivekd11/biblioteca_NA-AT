@@ -32,7 +32,7 @@ public class gestionar_estantes {
         int seleccion;
 
         do {
-            System.out.println("\nManejo de Estantes\n\nDigita la opción que deseas utilizar.\n\n\t1. Crear nuevo estante.\n\t2. Mostrar información de un estante.\n\t3. Mostrar todos los estantes.\n\t4. Agregar libro a estante.\n\n\t5. Regresar al menú principal");
+            System.out.println("\nManejo de Estantes\n\nDigita la opción que deseas utilizar.\n\n\t1. Crear nuevo estante.\n\t2. Mostrar información de un estante.\n\t3. Mostrar todos los estantes.\n\t4. Agregar libro a estante.\n\n\t5. Regresar al menú principal\n\n");
             System.out.print("Tu elección: ");
             seleccion = scan.nextInt(10);
             if (objControl.validarOpcionMenu(seleccion)) {
@@ -88,7 +88,7 @@ public class gestionar_estantes {
                 scanEstante = scanEstante();
                 objEstante = objControl.mostrarEstante(scanEstante);
                 while (objEstante==null){
-                    System.out.println("No hay ningún estante con esta nomenclatura");
+                    System.out.println("No hay ningún estante con esta nomenclatura, ingrese los datos nuevamente:");
                     scanEstante = scanEstante();
                     objEstante = objControl.mostrarEstante(scanEstante);
                 }
@@ -116,6 +116,11 @@ public class gestionar_estantes {
                 System.out.print("\n\nIngrese el ISBN del libro: ");
                 isbn = scan.next();
                 libro = objControlLibros.mostrarLibroPorISBN(isbn);
+                while (libro==null){
+                    System.out.println("No hay ningún libro con este ISBN, ingrese los datos nuevamente: ");
+                    isbn = scan.next();
+                    libro = objControlLibros.mostrarLibroPorISBN(isbn);
+                }
                 System.out.print("Información del libro:\n\n" + libro.toString() + "\n\n\t¿Deseas asignar este libro a un nuevo estante? [S/N]: ");
                 respuesta = scan.next();
                 while (!"s".equalsIgnoreCase(respuesta) && !"n".equalsIgnoreCase(respuesta)) {

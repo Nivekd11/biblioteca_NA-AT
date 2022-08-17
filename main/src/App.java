@@ -42,8 +42,7 @@ public class App {
 
             }
         } while (opcion < 5);
-<<<<<<< HEAD
-=======
+
         // String Dateinicio     = "2022-08-08";
         // SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -57,7 +56,6 @@ public class App {
 
         // System.out.println(dias);
 
->>>>>>> 553dcbfc56e6595884973786d3373d2f36c5c355
 
     }
 
