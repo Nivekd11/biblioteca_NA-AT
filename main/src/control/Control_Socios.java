@@ -84,36 +84,6 @@ public class Control_Socios {
 
     }
 
-    /**
-     * @param curp
-     */
-    public void eliminarSocio(String curp) {
-        conexion = ConexionBD.connectDatabase();
-        PreparedStatement ps = null;
-        if(mostrarSocio(curp) != null ){
-            String sql = "DELETE FROM socio WHERE curp=?;";
-
-            try {
-                ps = conexion.prepareStatement(sql);
-                ps.setString(1, curp);
-                ps.executeQuery();
-                System.out.println("El socio se a actualizado con exito");
-            } catch (Exception e) {
-            // System.err.println(e);
-
-            } finally {
-                try {
-                    conexion.close();
-                } catch (SQLException e) {
-                    // System.err.println(e);
-                }
-            }
-        }else{
-            System.out.println("El socio no existe");
-        }
-        
-
-    }
 
     /**
      * @return
@@ -193,6 +163,35 @@ public class Control_Socios {
             }
         }
         return null;
+    }
+
+        /**
+     * @param curp
+     */
+    public void eliminarSocio(String curp) {
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        
+            String sql = "DELETE FROM socio WHERE curp=?;";
+
+            try {
+                ps = conexion.prepareStatement(sql);
+                ps.setString(1, curp);
+                ps.executeUpdate();
+                System.out.println("El socio se a eliminado con exito");
+            } catch (Exception e) {
+                System.err.println(e);
+
+            } finally {
+                try {
+                    conexion.close();
+                } catch (SQLException e) {
+                    // System.err.println(e);
+                }
+            }
+        
+        
+
     }
 
 }
