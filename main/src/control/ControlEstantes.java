@@ -71,10 +71,11 @@ public class ControlEstantes {
         PreparedStatement ps;
         String sql = "INSERT INTO ESTANTE_LIBRO (idEstante, idLibro) values (?,?)";
 
+        System.out.println(sql + " Id Libro "+ idLibro  + "Estante: "+  idEstante);
         try {
             ps = conexion.prepareStatement(sql);
-            ps.setInt(1,  idLibro);
-            ps.setInt(2, idEstante);
+            ps.setInt(1,  idEstante);
+            ps.setInt(2, idLibro);
             ps.execute();
             System.out.println("Libro insertado al estante correctamente");
         } catch (SQLException e) {
@@ -123,6 +124,43 @@ public class ControlEstantes {
         }
 
         return idSeccion;
+    }
+
+
+    /**
+     * Método para obtener el id de una Sección.
+     *
+     * @param estante Nombre de la sección que se va a buscar
+     * @return int → Identificador de la sección.
+     */
+    public int buscarIdEstante(String estante) {
+        //Variables
+        Connection conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps;
+        ResultSet rs;
+        int idEstante = 0;
+        String confirmarIdSeccion = "SELECT idestante FROM estante WHERE nombre = ?;";
+
+        // Action: Comprobar que la sección existe
+        try {
+            ps = conexion.prepareStatement(confirmarIdSeccion);
+            ps.setString(1, estante);
+            rs = ps.executeQuery();
+            // Situation: La consulta mostró que la sección existe
+            if (rs.next()) {
+                idEstante = rs.getInt("idestante");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return idEstante;
     }
 
     /**

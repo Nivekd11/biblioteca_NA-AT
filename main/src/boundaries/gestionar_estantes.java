@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *xdxdxdx
+ *
  */
 public class gestionar_estantes {
 
@@ -32,17 +32,19 @@ public class gestionar_estantes {
         int seleccion;
 
         do {
+            limpiarPantalla();
             System.out.println("\nManejo de Estantes\n\nDigita la opción que deseas utilizar.\n\n\t1. Crear nuevo estante.\n\t2. Mostrar información de un estante.\n\t3. Mostrar todos los estantes.\n\t4. Agregar libro a estante.\n\n\t5. Regresar al menú principal\n\n");
-            System.out.print("Tu elección: ");
+            System.out.print("Ingresa tu elección (Ejemplo: 1): ");
             seleccion = scan.nextInt(10);
             if (objControl.validarOpcionMenu(seleccion)) {
                 seleccionarOpcion(seleccion);
             } else {
                 while (!objControl.validarOpcionMenu(seleccion)) {
-                    System.out.println("Que ingreses un formato válido >:c");
+                    System.out.println("Ingresa un formato válido");
                     System.out.print("La opción que seleccionaste no es válida, intenta nuevamente (Ejemplo: 3): ");
                     seleccion = scan.nextInt();
                 }
+                limpiarPantalla();
                 seleccionarOpcion(seleccion);
             }
 
@@ -73,6 +75,7 @@ public class gestionar_estantes {
                 seccion.setId(idSeccion);
                 // Action: Crear el estante con la información de su sección correspondiente
                 objControl.crearEstante(estante.getNombre(), Integer.parseInt(seccion.getId()));
+                limpiarPantalla();
                 System.out.println("\n\n\nNuevo estante asignado\n\n\tEstante: " + estante.getNombre() + "\n\tSección: " + seccion.getNombre() + "\n\tId Sección: " + seccion.getId() + "\n\n");
                 break;
 
@@ -83,15 +86,17 @@ public class gestionar_estantes {
                 Estante objEstante;
                 String scanEstante;
 
+                limpiarPantalla();
                 System.out.print("\n\nBuscar información del estante\n\n");
                 // Action: Pide al usuario información válida del estante
                 scanEstante = scanEstante();
                 objEstante = objControl.mostrarEstante(scanEstante);
-                while (objEstante==null){
+                while (objEstante == null) {
                     System.out.println("No hay ningún estante con esta nomenclatura, ingrese los datos nuevamente:");
                     scanEstante = scanEstante();
                     objEstante = objControl.mostrarEstante(scanEstante);
                 }
+                limpiarPantalla();
                 System.out.println("\n\n---------------------------------");
                 System.out.println("\t\tEstante: " + objEstante.getNombre());
                 System.out.println("\t\tSección: " + objEstante.getSeccion());
@@ -101,6 +106,7 @@ public class gestionar_estantes {
 
             // Situation: Mostrar información de todos los estantes
             case 3:
+                limpiarPantalla();
                 System.out.print("\n\nEstantes actuales\n\n");
                 mostrarSEstantes(objControl.mostrarEstantes());
                 break;
@@ -116,8 +122,8 @@ public class gestionar_estantes {
                 System.out.print("\n\nIngrese el ISBN del libro: ");
                 isbn = scan.next();
                 libro = objControlLibros.mostrarLibroPorISBN(isbn);
-                while (libro==null){
-                    System.out.println("No hay ningún libro con este ISBN, ingrese los datos nuevamente: ");
+                while (libro.getIsbn() == null) {
+                    System.out.print("No hay ningún libro con este ISBN, ingrese los datos nuevamente: ");
                     isbn = scan.next();
                     libro = objControlLibros.mostrarLibroPorISBN(isbn);
                 }
@@ -129,9 +135,8 @@ public class gestionar_estantes {
                 }
                 if (respuesta.equalsIgnoreCase("S")) {
                     respuesta = scanEstante();
-                    objControl.agregarLibroAEstante(libro.getIdLibro(), Integer.valueOf(respuesta));
-                    System.out.println("\n\n\tLibro agregado al estante");
-                    System.out.println(libro);
+                    objControl.agregarLibroAEstante(libro.getIdLibro(), objControl.buscarIdEstante(respuesta));
+                    System.out.println("\n\n\tLibro agregado al estante " + respuesta);
                 }
                 break;
         }
@@ -165,11 +170,17 @@ public class gestionar_estantes {
         estantes = scan.next();
         // Situation: El usuario no ingresa datos válidos referentes a una sección
         while (!objControl.validarSeccion(estantes)) {
-            System.out.println("Que ingreses un formato válido >:c");
+            System.out.println("Que ingreses un formato válido");
             System.out.print("Escribe la nomenclatura del estante (Ejemplo: A-239): ");
             estantes = scan.next();
         }
 
         return estantes;
     }
+
+    private void limpiarPantalla() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 }
+
