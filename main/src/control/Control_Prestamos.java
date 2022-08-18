@@ -74,6 +74,29 @@ public class Control_Prestamos {
         return 0;
     }
 
+    public int buscarPrestamoPorFolio(int folio){
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT idlibro FROM prestamo WHERE folio = ?";
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, folio);
+            rs = ps.executeQuery();
+            if (rs.next()) return rs.getInt("idlibro");
+        } catch (SQLException e) {
+            System.err.println("--"+e);
+            return  0;
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println("++"+e);
+            }
+        }
+        return 0;
+    }
+
     public void crearPrestamo(Prestamo prestamo) {
         conexion = ConexionBD.connectDatabase();
         PreparedStatement ps = null;
@@ -101,7 +124,7 @@ public class Control_Prestamos {
     }
 
 
-    public  void actuaLizarPrestamo(int folio, java.sql.Date fechaIngreso){
+    public  void actuaLizarPrestamo(int folio, java.sql.Date fechaIngreso,int idlibro){
         conexion = ConexionBD.connectDatabase();
         PreparedStatement ps = null;
         String sql = "UPDATE prestamo set fecha_ingreso = ? where folio = ?;";
@@ -110,8 +133,9 @@ public class Control_Prestamos {
             ps.setDate(1,fechaIngreso);
             ps.setInt(2,folio);
             ps.executeUpdate();
-
-            System.out.println("Se ha actualizado la entrega del pretamo ");
+            actualizarEjemplares(idlibro,numeroEjemplares(idlibro) + 1);
+            System.out.println("--Libro entregado--");
+            System.out.println("Se ha actualizado la fecha de entrega del pretamo");
         } catch (SQLException e) {
             System.err.println("---errorSQL---"+e);
         }finally {
@@ -194,8 +218,7 @@ public class Control_Prestamos {
         return null;
     }
 
-    public void actualizarPrestamo(Prestamo prestamo) {
-    }
+
 */
     public Prestamo mostrarPrestamo(int idFolio) {
         Prestamo objPrestamo=new Prestamo();
@@ -211,8 +234,8 @@ public class Control_Prestamos {
                 objPrestamo.setIdSocio(rs.getString("idsocio"));
                 objPrestamo.setFechaEgreso(rs.getDate("fecha_egreso"));
                 objPrestamo.setFechaLimite(rs.getDate("fecha_limite"));
+                objPrestamo.setFechaIngreso(rs.getDate("fecha_ingreso"));
                 objPrestamo.setIdLibro(rs.getInt("idlibro"));
-                
                 return objPrestamo;
 
             }

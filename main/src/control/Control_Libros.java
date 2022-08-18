@@ -407,7 +407,6 @@ public class Control_Libros {
 
     public Libro mostrarLibroPorISBN(String isbn) {
         conexion = ConexionBD.connectDatabase();
-        // TODO implement here
         objLibro = new Libro();
         PreparedStatement ps = null;
         ResultSet rs = null;
