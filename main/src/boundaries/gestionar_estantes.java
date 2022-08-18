@@ -17,6 +17,7 @@ public class gestionar_estantes {
     // Variables
     private final ControlEstantes objControl;
     private final Scanner scan;
+    private Scanner entrada;
 
     /**
      * Default constructor
@@ -25,6 +26,7 @@ public class gestionar_estantes {
         this.objControl = new ControlEstantes();
 
         this.scan = new Scanner(System.in);
+        this.entrada = new Scanner(System.in);
     }
 
     public void menu() {
@@ -33,7 +35,8 @@ public class gestionar_estantes {
 
         do {
             limpiarPantalla();
-            System.out.println("\nManejo de Estantes\n\nDigita la opción que deseas utilizar.\n\n\t1. Crear nuevo estante.\n\t2. Mostrar información de un estante.\n\t3. Mostrar todos los estantes.\n\t4. Agregar libro a estante.\n\n\t5. Regresar al menú principal\n\n");
+            System.out.println(
+                    "\nManejo de Estantes\n\nDigita la opción que deseas utilizar.\n\n\t1. Crear nuevo estante.\n\t2. Mostrar información de un estante.\n\t3. Mostrar todos los estantes.\n\t4. Agregar libro a estante.\n\n\t5. Regresar al menú principal\n\n");
             System.out.print("Ingresa tu elección (Ejemplo: 1): ");
             seleccion = scan.nextInt(10);
             if (objControl.validarOpcionMenu(seleccion)) {
@@ -66,7 +69,8 @@ public class gestionar_estantes {
                 System.out.println("\n\n\tSecciones existentes\n\n");
                 // Action: Mostrar la sección a la que podría pertenecer.
                 mostrarSecciones(objControl.mostrarSecciones());
-                System.out.print("\n\n\t¿A qué sección pertenecerá? (Si no existe la sección deseada puedes agregar una nueva): ");
+                System.out.print(
+                        "\n\n\t¿A qué sección pertenecerá? (Si no existe la sección deseada puedes agregar una nueva): ");
                 // Action: Agregar nombre de la sección
                 seccion.setNombre(scan.next());
                 // Action: Agregar el registro de la sección seleccionada
@@ -75,10 +79,13 @@ public class gestionar_estantes {
                 seccion.setId(idSeccion);
                 // Action: Crear el estante con la información de su sección correspondiente
                 objControl.crearEstante(estante.getNombre(), Integer.parseInt(seccion.getId()));
+                System.out.println("\n\nPresione enter para continuar...");
+                entrada.nextLine();
+                entrada.nextLine();
                 limpiarPantalla();
-                System.out.println("\n\n\nNuevo estante asignado\n\n\tEstante: " + estante.getNombre() + "\n\tSección: " + seccion.getNombre() + "\n\tId Sección: " + seccion.getId() + "\n\n");
+                System.out.println("\n\n\nNuevo estante asignado\n\n\tEstante: " + estante.getNombre() + "\n\tSección: "
+                        + seccion.getNombre() + "\n\tId Sección: " + seccion.getId() + "\n\n");
                 break;
-
 
             // Situation: Mostrar información de un estante
             case 2:
@@ -96,12 +103,14 @@ public class gestionar_estantes {
                     scanEstante = scanEstante();
                     objEstante = objControl.mostrarEstante(scanEstante);
                 }
-                limpiarPantalla();
+                // limpiarPantalla();
                 System.out.println("\n\n---------------------------------");
                 System.out.println("\t\tEstante: " + objEstante.getNombre());
                 System.out.println("\t\tSección: " + objEstante.getSeccion());
                 System.out.println("---------------------------------");
-
+                System.out.println("\n\nPresione enter para continuar...");
+                entrada.nextLine();
+                entrada.nextLine();
                 break;
 
             // Situation: Mostrar información de todos los estantes
@@ -109,6 +118,9 @@ public class gestionar_estantes {
                 limpiarPantalla();
                 System.out.print("\n\nEstantes actuales\n\n");
                 mostrarSEstantes(objControl.mostrarEstantes());
+                System.out.println("\n\nPresione enter para continuar...");
+                entrada.nextLine();
+                entrada.nextLine();
                 break;
 
             // Situation: Agregar libro al estante
@@ -127,7 +139,8 @@ public class gestionar_estantes {
                     isbn = scan.next();
                     libro = objControlLibros.mostrarLibroPorISBN(isbn);
                 }
-                System.out.print("Información del libro:\n\n" + libro.toString() + "\n\n\t¿Deseas asignar este libro a un nuevo estante? [S/N]: ");
+                System.out.print("Información del libro:\n\n" + libro.toString()
+                        + "\n\n\t¿Deseas asignar este libro a un nuevo estante? [S/N]: ");
                 respuesta = scan.next();
                 while (!"s".equalsIgnoreCase(respuesta) && !"n".equalsIgnoreCase(respuesta)) {
                     System.out.print("Respuesta no admitida, intente nuevamente [S/N]: ");
@@ -138,6 +151,9 @@ public class gestionar_estantes {
                     objControl.agregarLibroAEstante(libro.getIdLibro(), objControl.buscarIdEstante(respuesta));
                     System.out.println("\n\n\tLibro agregado al estante " + respuesta);
                 }
+                System.out.println("\n\nPresione enter para continuar...");
+                entrada.nextLine();
+                entrada.nextLine();
                 break;
         }
     }
@@ -165,7 +181,6 @@ public class gestionar_estantes {
         // Variables
         String estantes;
 
-
         System.out.print("Escribe la nomenclatura del estante (Ejemplo: A-23): ");
         estantes = scan.next();
         // Situation: El usuario no ingresa datos válidos referentes a una sección
@@ -183,4 +198,3 @@ public class gestionar_estantes {
         System.out.flush();
     }
 }
-

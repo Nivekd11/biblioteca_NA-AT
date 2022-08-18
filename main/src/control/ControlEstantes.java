@@ -63,18 +63,17 @@ public class ControlEstantes {
     /**
      * Método para crear un nuevo estante.
      *
-     * @param idLibro ID del Libro
-     * @param idEstante  ID del estante
+     * @param idLibro   ID del Libro
+     * @param idEstante ID del estante
      */
     public void agregarLibroAEstante(int idLibro, int idEstante) {
         Connection conexion = ConexionBD.connectDatabase();
         PreparedStatement ps;
         String sql = "INSERT INTO ESTANTE_LIBRO (idEstante, idLibro) values (?,?)";
 
-        System.out.println(sql + " Id Libro "+ idLibro  + "Estante: "+  idEstante);
         try {
             ps = conexion.prepareStatement(sql);
-            ps.setInt(1,  idEstante);
+            ps.setInt(1, idEstante);
             ps.setInt(2, idLibro);
             ps.execute();
             System.out.println("Libro insertado al estante correctamente");
@@ -97,7 +96,7 @@ public class ControlEstantes {
      * @return int → Identificador de la sección.
      */
     private int buscarIdSeccion(String seccion) {
-        //Variables
+        // Variables
         Connection conexion = ConexionBD.connectDatabase();
         PreparedStatement ps;
         ResultSet rs;
@@ -126,7 +125,6 @@ public class ControlEstantes {
         return idSeccion;
     }
 
-
     /**
      * Método para obtener el id de una Sección.
      *
@@ -134,7 +132,7 @@ public class ControlEstantes {
      * @return int → Identificador de la sección.
      */
     public int buscarIdEstante(String estante) {
-        //Variables
+        // Variables
         Connection conexion = ConexionBD.connectDatabase();
         PreparedStatement ps;
         ResultSet rs;
@@ -270,7 +268,6 @@ public class ControlEstantes {
             }
         }
 
-
     }
 
     /**
@@ -333,7 +330,7 @@ public class ControlEstantes {
      * @param opcion Opción seleccionada
      * @return Boolean
      */
-    public Boolean validarOpcionMenu (int opcion) {
+    public Boolean validarOpcionMenu(int opcion) {
         return String.valueOf(opcion).matches("[0-5]");
     }
 
