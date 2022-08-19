@@ -13,6 +13,6 @@
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "e:\\PROGRAMS\\Postsgresql\\postgresql-42.4.0.jar"
+        "c:\\Users\\LENOVO\\Desktop\\postgresql-42.4.0.jar"
     ]
 }

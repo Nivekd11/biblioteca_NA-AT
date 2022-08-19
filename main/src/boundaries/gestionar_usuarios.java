@@ -58,7 +58,13 @@ public class gestionar_usuarios {
                 String curp = entrada.next();
                 //System.out.println("El socio se a eliminado con exito");
                 //mostrarSocio(objControl.mostrarSocio(curp));
-                objControl.eliminarSocio(curp);
+                if(objControl.mostrarSocio(curp)!=null){
+                    objControl.eliminarSocio(curp);
+                }
+                else{
+                    System.out.println("El socio no existe");
+                }
+                
                 System.out.println("Presiones cualquier tecla y un enter para continuar....");
                 entrada.next();
                 break;

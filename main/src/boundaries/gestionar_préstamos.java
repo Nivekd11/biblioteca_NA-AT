@@ -27,13 +27,13 @@ public class gestionar_préstamos {
 
     public void menu() {
 
-        //System.out.flush();
+        // System.out.flush();
         int opcion = 0;
-        while (opcion != 9) {
+        while (opcion != 8) {
             System.out.print("\033[H\033[2J");
             System.out.flush();
             System.out.print(
-                    "\nManejo de Prestamos \n\nDigita la opción que deseas utilizar.\n\n1. Generar Prestamo\n2. Buscar Prestamo\n3. Entrega de Libro\n5. Crear Penalización \n6. Ver penalizaciones de socio \n7. Ver todas las penalizaciones \n8. Pagar deuda \n9. Salir\n");
+                    "\nManejo de Prestamos \n\nDigita la opción que deseas utilizar.\n\n1. Generar Prestamo\n2. Buscar Prestamo\n3. Entrega de Libro\n4. Crear Penalización \n5. Ver penalizaciones de socio \n6. Ver todas las penalizaciones \n7. Pagar deuda \n8. Salir\n");
             opcion = entrada.nextInt();
             switch (opcion) {
                 case 1:
@@ -45,19 +45,18 @@ public class gestionar_préstamos {
                 case 3:
                     entregarLibro();
                     break;
-                case 5:
+                case 4:
                     generarPenalizacionPerdida();
                     break;
-                case 6:
+                case 5:
                     mostrarPenalizaciones();
                     break;
-                case 7:
+                case 6:
                     mostrarTodasLasPenalizaciones();
                     break;
-                case 8:
+                case 7:
                     pagarDeuda();
                     break;
-
 
             }
         }
@@ -69,7 +68,7 @@ public class gestionar_préstamos {
         Prestamo prestamo = new Prestamo();
         String curp = "";
         System.out.println("Ingrese CURP del socio: ");
-        //System.out.flush();
+        // System.out.flush();
         curp = entrada.nextLine().toUpperCase();
         curp = entrada.nextLine().toUpperCase();
         if (!objControl.buscarSocio(curp).equals("")) {
@@ -101,7 +100,6 @@ public class gestionar_préstamos {
             String linea = entrada.nextLine();
         }
 
-
     }
 
     public void entregarLibro() {
@@ -111,14 +109,14 @@ public class gestionar_préstamos {
         System.out.println("Ingrese folio del prestamo: ");
         folio = entrada.nextInt();
         int idlibro = objControl.buscarPrestamoPorFolio(folio);
-        if (idlibro != 0){
+        if (idlibro != 0) {
             LocalDate fechaIngreso = LocalDate.now();
-            objControl.actuaLizarPrestamo(folio,java.sql.Date.valueOf(fechaIngreso),idlibro);
+            objControl.actuaLizarPrestamo(folio, java.sql.Date.valueOf(fechaIngreso), idlibro);
             System.out.println("Presione enter para continuar...");
             linea = entrada.nextLine();
             linea = entrada.nextLine();
-        }else{
-            System.out.println("El prestamo con folio "+folio+" no existe");
+        } else {
+            System.out.println("El prestamo con folio " + folio + " no existe");
             System.out.println("Presione enter para continuar...");
             linea = entrada.nextLine();
             linea = entrada.nextLine();
@@ -146,16 +144,17 @@ public class gestionar_préstamos {
         } else {
             tipoPerdida = "Estropeado";
         }
-        Control_Libros objControlLibro=new Control_Libros();
+        Control_Libros objControlLibro = new Control_Libros();
         Prestamo prestamo = objControl.mostrarPrestamo(folio);
         Libro libro = objControlLibro.mostrarLibroPorId(prestamo.getIdLibro());
-        System.out.println("El precio del libro "+libro.getTitulo()+" es de: "+libro.getValor());
+        System.out.println("El precio del libro " + libro.getTitulo() + " es de: " + libro.getValor());
         System.out.println("Digite el costo del libro:");
         costo = entrada.nextFloat();
         Date fechaIngreso = new Date(System.currentTimeMillis());
-        //objControl.actuaLizarPrestamo(folio, new  java.sql.Date(fechaIngreso.getTime()) );
+        // objControl.actuaLizarPrestamo(folio, new
+        // java.sql.Date(fechaIngreso.getTime()) );
         prestamo = objControl.mostrarPrestamo(folio);
-        //prestamo.toString();
+        // prestamo.toString();
         if (prestamo != null) {
             int milisecondsByDay = 86400000;
             int dias = (int) ((prestamo.getFechaLimite().getTime() - fechaIngreso.getTime()) / milisecondsByDay);
@@ -182,7 +181,7 @@ public class gestionar_préstamos {
         System.out.println("Digita el CURP del socio para mostrar sus penalizaciones activas:");
         String curp = "";
         String mensaje = "";
-        //System.out.flush();
+        // System.out.flush();
         curp = entrada.nextLine().toUpperCase();
         curp = entrada.nextLine().toUpperCase();
         mensaje = objControl.mostrarPenalizacionesActivas(curp);
@@ -218,28 +217,28 @@ public class gestionar_préstamos {
         entrada.next();
     }
 
-    public  void mostrarPrestamo(){
+    public void mostrarPrestamo() {
         int folio = 0;
         limpiarPantalla();
         String linea;
         System.out.println("Ingrese folio del prestamo: ");
         folio = entrada.nextInt();
         int idlibro = objControl.buscarPrestamoPorFolio(folio);
-        if (idlibro != 0){
+        if (idlibro != 0) {
             LocalDate fechaIngreso = LocalDate.now();
             Prestamo prestamo = new Prestamo();
             prestamo = objControl.mostrarPrestamo(folio);
             System.out.println("\n*********************************");
-            System.out.println("Fecha de egreso: "+prestamo.getFechaEgreso());
-            System.out.println("Fecha limite: "+prestamo.getFechaLimite());
-            System.out.println("Fecha ingreso: "+prestamo.getFechaIngreso());
-            System.out.println("Socio: "+prestamo.getIdSocio());
-            System.out.println("Libro: "+prestamo.getIdLibro());
+            System.out.println("Fecha de egreso: " + prestamo.getFechaEgreso());
+            System.out.println("Fecha limite: " + prestamo.getFechaLimite());
+            System.out.println("Fecha ingreso: " + prestamo.getFechaIngreso());
+            System.out.println("Socio: " + prestamo.getIdSocio());
+            System.out.println("Libro: " + prestamo.getIdLibro());
             System.out.println("Presione enter para continuar...");
             linea = entrada.nextLine();
             linea = entrada.nextLine();
-        }else{
-            System.out.println("El prestamo con folio "+folio+" no existe");
+        } else {
+            System.out.println("El prestamo con folio " + folio + " no existe");
             System.out.println("Presione enter para continuar...");
             linea = entrada.nextLine();
             linea = entrada.nextLine();
