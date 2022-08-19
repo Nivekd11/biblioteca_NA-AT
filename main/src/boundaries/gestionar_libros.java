@@ -113,15 +113,6 @@ public class gestionar_libros {
         return libro;
     }
 
-    public void mostrarLibro(Libro libro) {
-        if (libro.getIdEditorial() > 0) {
-            System.out.println("\nDatos del libro");
-            System.out.println(libro.toString());
-            System.out.println();
-        } else {
-            System.out.println("El libro no fue encontrado en la base de datos");
-        }
-    }
 
     public void mostrarLibros(List<Libro> libros) {
         System.out.println("Datos de los Libros\n");

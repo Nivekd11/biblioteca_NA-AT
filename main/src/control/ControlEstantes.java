@@ -19,7 +19,7 @@ import entities.Seccion;
 public class ControlEstantes {
 
     // Atributos
-    Connection conexion;
+    private Connection conexion;
     private Estante objEstante;
     private Seccion objSeccion;
     private List<Estante> listEstantes;

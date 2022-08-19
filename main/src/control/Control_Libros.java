@@ -484,7 +484,7 @@ public class Control_Libros {
         return objLibro;
     }
 
-    public List<Autor> mostrarAutores() {
+    public List<Autor> mostrarAutores() bus{
         conexion = ConexionBD.connectDatabase();
         List<Autor> autores = new ArrayList<Autor>();
         Autor autor = new Autor();
