@@ -398,7 +398,105 @@ public class Control_Prestamos {
 
         return "";
     }
+    public void crearPenalizaciones(java.sql.Date fechaActual){
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select \n" +
+                "p.folio,\n" +
+                "(to_date(?,'yyyy-mm-dd') + cast(((? - p.fecha_limite)*3) || ' days' as interval)) as fecha_termino,\n" +
+                "p.idsocio, \n" +
+                "case\n" +
+                "when ((? - p.fecha_limite)*3) > 60 then 'Deshabilitar'\n" +
+                "when pe.idprestamo is null then 'Crear'\n" +
+                "else 'Actualizar'\n" +
+                "end as estatus\n" +
+                "from \n" +
+                "prestamo p left join penalizacion pe on pe.idprestamo = p.folio and pe.estatus = 'Activa', \n" +
+                "socio s \n" +
+                "where p.idsocio = s.curp \n" +
+                "and s.estatus = 'Habilitado' \n" +
+                "and p.fecha_limite < ? \n" +
+                "and p.fecha_ingreso is null;";
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setDate(1,fechaActual);
+            ps.setDate(2,fechaActual);
+            ps.setDate(3,fechaActual);
+            ps.setDate(4,fechaActual);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                //System.out.println(rs.getInt("folio") + " | " + rs.getDate("fecha_termino") + " | " + rs.getString("estatus"));
+                switch (rs.getString("estatus")) {
+                    case "Deshabilitar":
+                        Control_Socios socio = new Control_Socios();
+                        socio.actualizarSocio(rs.getString("idsocio"));
+                        break;
+                    case "Crear":
+                        crearPenalizacion(fechaActual,rs.getDate("fecha_termino"),rs.getInt("folio"));
+                        break;
+                    case "Actualizar":
+                        actualizarPenalizacion(rs.getDate("fecha_termino"),rs.getInt("folio"));
+                        break;
+                }
+            }
 
-    
+
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+    }
+
+    public void crearPenalizacion(java.sql.Date fechaCreacion,java.sql.Date fechaTermino,int idPrestamo){
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "INSERT INTO penalizacion (estatus,tipo,fecha_creacion,fecha_termino,costo,idPrestamo) VALUES('Activa','Retraso',?,?,0.0,?);";
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setDate(1, fechaCreacion);
+            ps.setDate(2, fechaTermino);
+            ps.setInt(3, idPrestamo);
+            ps.executeUpdate();
+
+            System.out.println("Se registro correctamente la penalizacion ");
+
+        } catch (SQLException e) {
+            System.err.println("---errorSQL---"+e);
+        }finally {
+            try {
+                conexion.close();
+            }catch (SQLException e){
+                System.out.println("error al cerrar la conexion: "+e);
+            }
+        }
+
+    }
+
+    public void actualizarPenalizacion(java.sql.Date fechaTermino,int folio){
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "UPDATE penalizacion set fecha_termino = ? where idprestamo = ? and tipo = 'Retraso';";
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setDate(1,fechaTermino);
+            ps.setInt(2, folio);
+            ps.executeUpdate();
+            System.out.println("Se actualizo correctamente la penalizacion ");
+        } catch (SQLException e) {
+            System.err.println("---errorSQL---"+e);
+        }finally {
+            try {
+                conexion.close();
+            }catch (SQLException e){
+                System.out.println("error al cerrar la conexion: "+e);
+            }
+        }
+    }
 
 }

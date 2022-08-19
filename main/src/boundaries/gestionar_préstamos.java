@@ -22,9 +22,13 @@ public class gestionar_préstamos {
 
     public static void main(String[] args) {
         gestionar_préstamos objPrestamo = new gestionar_préstamos();
-        objPrestamo.menu();
+        objPrestamo.cronPenallizacion();
     }
 
+    public void cronPenallizacion(){
+        LocalDate fechaActual = LocalDate.now();
+        objControl.crearPenalizaciones(java.sql.Date.valueOf(fechaActual));
+    }
     public void menu() {
 
         // System.out.flush();

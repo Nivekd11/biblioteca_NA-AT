@@ -84,10 +84,29 @@ public class Control_Socios {
 
     }
 
+    public void actualizarSocio(String curp) {
+        conexion = ConexionBD.connectDatabase();
+        PreparedStatement ps = null;
+        String sql = "UPDATE socio SET estatus = 'Deshabilitado' WHERE curp = ?";
 
-    /**
-     * @return
-     */
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1, curp);
+            ps.executeUpdate();
+            System.out.println("Socio Deshabilitado");
+        } catch (Exception e) {
+            //System.err.println(e);
+
+        } finally {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                // System.err.println(e);
+            }
+        }
+
+    }
+
     public List<Socio> mostrarSocios() {
         conexion = ConexionBD.connectDatabase();
         PreparedStatement ps = null;
